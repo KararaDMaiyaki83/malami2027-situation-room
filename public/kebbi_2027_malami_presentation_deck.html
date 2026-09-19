@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kebbi 2027 Situation Room & Financial Implications | Presentation for Abubakar Malami, SAN</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @media print {
+      body {
+        background: #020617 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .slide-page {
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+        height: 100vh !important;
+        width: 100vw !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 2.5rem !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+      }
+      @page {
+        size: landscape;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen selection:bg-emerald-500 selection:text-white">
+
+  <!-- TOP PRESENTATION CONTROLS BAR (Hidden during print) -->
+  <header class="no-print sticky top-0 z-50 bg-slate-900/90 backdrop-blur border-b border-slate-800 px-6 py-3.5 flex flex-wrap items-center justify-between gap-4 shadow-xl">
+    <div class="flex items-center gap-3">
+      <img src="/malami_logo.png" alt="Abubakar Malami SAN CON" class="w-10 h-10 rounded-xl object-cover border-2 border-amber-400">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-black text-white">ABUBAKAR MALAMI, SAN, CON</span>
+          <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-black border border-emerald-500/30">ADC 🤝 KEBBI 2027</span>
+        </div>
+        <p class="text-[11px] text-slate-400">Executive Master Presentation Deck • Situation Room & Financial Implications</p>
+      </div>
+    </div>
+
+    <!-- Tech Partner Co-Branding -->
+    <div class="hidden lg:flex items-center gap-2 text-xs bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800" title="IT Technical Officer: Fatima Sulaiman Umar | Support Hotlines: 08035533332 / 09035328748">
+      <span class="text-slate-400">Powered by</span>
+      <span class="font-bold text-emerald-400">GetoCore Digital Innovation</span>
+      <span class="text-slate-600">×</span>
+      <span class="font-bold text-amber-300">TEEM TECH Solution</span>
+      <span class="text-[10px] text-slate-500 font-mono hidden xl:inline">| IT: Fatima Sulaiman Umar</span>
+    </div>
+
+    <!-- Action Buttons: Print PDF & Download PPTX -->
+    <div class="flex items-center gap-2.5">
+      <button 
+        onclick="window.print()" 
+        class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition transform hover:scale-105"
+        title="Print all slides directly to PDF in landscape mode"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>Print Presentation (PDF)</span>
+      </button>
+
+      <a 
+        href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx" 
+        download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
+        class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-xs font-black flex items-center gap-2 shadow-lg shadow-amber-500/20 transition transform hover:scale-105"
+        title="Download editable PowerPoint (.pptx) file for Microsoft PowerPoint or Google Slides"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span>Download PowerPoint (.pptx)</span>
+      </a>
+
+      <a 
+        href="/kebbi_2027_financial_implications_budget.html" 
+        target="_blank"
+        class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition"
+      >
+        <span>View Itemized Budget (₦329M)</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- SLIDES WRAPPER -->
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+
+    <!-- SLIDE 1: TITLE SLIDE -->
+    <section class="slide-page bg-slate-900 border-2 border-emerald-500/40 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden flex flex-col justify-between min-h-[580px]">
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div class="flex items-center space-x-3">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-black border border-emerald-500/40">
+            SLIDE 1 &bull; EXECUTIVE CHARTER
+          </span>
+          <span class="text-xs font-mono text-slate-400">CONFIDENTIAL &bull; EYES ONLY</span>
+        </div>
+        <div class="text-xs text-slate-400 font-mono">KEBBI 2027 GUBERNATORIAL ELECTION</div>
+      </div>
+
+      <div class="my-auto py-8 text-center space-y-5">
+        <div class="inline-flex items-center gap-3 p-2 px-4 rounded-2xl bg-slate-950 border border-slate-800">
+          <img src="/malami_logo.png" alt="Abubakar Malami, SAN, CON" class="w-14 h-14 rounded-xl object-cover border-2 border-amber-400 shadow">
+          <div class="text-left">
+            <div class="text-xs font-black text-amber-400 uppercase tracking-wider">Strategic Candidate Briefing</div>
+            <div class="text-base font-bold text-white">Abubakar Malami, SAN, CON</div>
+            <div class="text-[10px] text-slate-400">Former Attorney-General of the Federation & Minister of Justice</div>
+          </div>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight max-w-4xl mx-auto">
+          ELECTORAL SITUATION ROOM &amp; PVT FORENSIC COMMAND
+        </h1>
+        
+        <p class="text-sm sm:text-lg text-emerald-400 font-semibold max-w-2xl mx-auto">
+          Comprehensive Strategy, Field Telemetry Architecture &amp; Complete Financial Implications
+        </p>
+
+        <div class="pt-4 flex flex-wrap items-center justify-center gap-3 text-xs">
+          <span class="px-3 py-1 rounded-xl bg-slate-950 border border-slate-800 text-slate-300">
+            🏛️ 3,745 Polling Units &bull; 225 Wards &bull; 21 LGAs
+          </span>
+          <span class="px-3 py-1 rounded-xl bg-slate-950 border border-slate-800 text-slate-300">
+            🛡️ Section 51 Anti-Over-Voting Defense
+          </span>
+          <span class="px-3 py-1 rounded-xl bg-slate-950 border border-slate-800 text-slate-300">
+            📊 Section 179(2) 25% Spread Verification
+          </span>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex flex-wrap justify-between items-center text-xs text-slate-500">
+        <div>African Democratic Congress (ADC 🤝) &bull; Directorate of Electoral Strategy & Legal Shield</div>
+        <div class="text-emerald-400 font-semibold">
+          Powered by GetoCore Digital Innovation in partnership with TEEM TECH Solution
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: 2023 POST-MORTEM & 2027 ANTIDOTE -->
+    <section class="slide-page bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col justify-between min-h-[580px]">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-6">
+          <span class="px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-black border border-rose-500/40">
+            SLIDE 2 &bull; STRATEGIC POST-MORTEM
+          </span>
+          <span class="text-xs text-slate-400 font-mono">LESSONS FROM 2023 GUBERNATORIAL ELECTION</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Forensic Audit of 2023: Why the Leading Party Lost &amp; The 2027 Antidote
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Understanding the Section 51 Margin of Lead loophole that turned a 45,000-vote victory into a supplementary defeat.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <!-- The 2023 Trap -->
+          <div class="bg-slate-950 p-6 rounded-2xl border border-rose-900/50 space-y-3">
+            <div class="flex items-center gap-2 text-rose-400 font-bold text-sm">
+              <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+              <span>HOW APC MANIPULATED THE 2023 ELECTION</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <span class="text-rose-400 font-bold">•</span>
+                <span><strong>The 45,000-Vote Trap:</strong> The leading candidate had a 45,000-vote lead, but collation was suspended because 91,000 PVCs were cancelled.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-rose-400 font-bold">•</span>
+                <span><strong>Synthetic Over-Voting:</strong> Corrupt officials injected extra ballot papers without BVAS accreditation, triggering Section 51 cancellations in opposition strongholds.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-rose-400 font-bold">•</span>
+                <span><strong>Collation Hall Subversion:</strong> Agents held handwritten result sheets that were altered at RAC centres without tamper-proof photo verification.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-rose-400 font-bold">•</span>
+                <span><strong>Supplementary Rerun Defeat:</strong> Inconclusive status enabled the state apparatus to concentrate security intimidation during the supplementary election.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- The 2027 Solution -->
+          <div class="bg-slate-950 p-6 rounded-2xl border border-emerald-900/60 space-y-3">
+            <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+              <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+              <span>THE 2027 MALAMI MATHEMATICAL SHIELD</span>
+            </div>
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span><strong>Surplus Margin Buffer (+75,000):</strong> Strategy engineered to build a lead margin that strictly exceeds the total statewide cancelled PVCs, legally barring any rerun.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span><strong>App Anti-Over-Voting Barrier:</strong> PWA rejects result submissions if total votes cast exceed BVAS accreditation count (mandatory Section 51 rule).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span><strong>Dual GPS Geo-Fence Tracking:</strong> Watermarked EC8A photo upload matching physical PU coordinates (&le;15m) to defeat remote uploads.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span><strong>Rapid Tribunal Dossier:</strong> Immediate filing of certified affidavits and Form EC40G protests directly to the INEC Returning Officer on the spot.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
+        <span>Prepared for Abubakar Malami, SAN, CON &bull; ADC Kebbi 2027</span>
+        <span>Powered by GetoCore Digital Innovation in partnership with TEEM TECH Solution &bull; Slide 2 of 8</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: 4-TIER HIERARCHY -->
+    <section class="slide-page bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col justify-between min-h-[580px]">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-6">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-black border border-emerald-500/40">
+            SLIDE 3 &bull; OPERATIONAL ARCHITECTURE
+          </span>
+          <span class="text-xs text-slate-400 font-mono">FIELD TO COMMAND RECONCILIATION</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          The 4-Tier Hierarchical Electoral Command Network
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Strict role-based containment ensuring total discipline from 3,745 Polling Units to State Situation Room.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+          <div class="bg-slate-950 p-5 rounded-2xl border border-blue-500/30 space-y-2">
+            <div class="text-[10px] font-mono text-blue-400 font-bold uppercase">Tier 1 &bull; 3,745 PUs</div>
+            <h3 class="text-sm font-bold text-white">Polling Unit Agents</h3>
+            <p class="text-xs text-slate-300">
+              6-Stage Phased reporting: Setup, BVAS 000 check, queue cutoff at 2:30pm, counting, EC8A photo upload & Presiding Officer escort.
+            </p>
+            <div class="text-[10px] text-emerald-400 font-mono">100% Offline SQLite Sync</div>
+          </div>
+
+          <div class="bg-slate-950 p-5 rounded-2xl border border-emerald-500/30 space-y-2">
+            <div class="text-[10px] font-mono text-emerald-400 font-bold uppercase">Tier 2 &bull; 225 Wards</div>
+            <h3 class="text-sm font-bold text-white">Ward RA Supervisors</h3>
+            <p class="text-xs text-slate-300">
+              Oversight of constituent PUs, mathematical collation into Form EC8B, physical RAC protection with motorbike escorts.
+            </p>
+            <div class="text-[10px] text-emerald-400 font-mono">Printable Form EC8B (PDF/CSV)</div>
+          </div>
+
+          <div class="bg-slate-950 p-5 rounded-2xl border border-purple-500/30 space-y-2">
+            <div class="text-[10px] font-mono text-purple-400 font-bold uppercase">Tier 3 &bull; 21 LGAs</div>
+            <h3 class="text-sm font-bold text-white">LGA Legal Shield Leads</h3>
+            <p class="text-xs text-slate-300">
+              Stationed at INEC LGA Collation Halls. Counsel armed with statutory affidavit protest powers under Section 51, 60 & 64.
+            </p>
+            <div class="text-[10px] text-purple-400 font-mono">Printable Form EC8C (PDF/CSV)</div>
+          </div>
+
+          <div class="bg-slate-950 p-5 rounded-2xl border border-amber-500/30 space-y-2">
+            <div class="text-[10px] font-mono text-amber-400 font-bold uppercase">Tier 4 &bull; Birnin Kebbi</div>
+            <h3 class="text-sm font-bold text-white">State Situation Room</h3>
+            <p class="text-xs text-slate-300">
+              Master telemetry oversight, Section 179(2) 25% spread tracker, PVT vs. IReV dual forensic verification, direct hotline to SAN Malami.
+            </p>
+            <div class="text-[10px] text-amber-400 font-mono">Printable Form EC8D (PDF/CSV)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
+        <span>Prepared for Abubakar Malami, SAN, CON &bull; ADC Kebbi 2027</span>
+        <span>Powered by GetoCore Digital Innovation in partnership with TEEM TECH Solution &bull; Slide 3 of 8</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: TECHNOLOGY ARCHITECTURE -->
+    <section class="slide-page bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col justify-between min-h-[580px]">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-6">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-black border border-emerald-500/40">
+            SLIDE 4 &bull; TECHNOLOGY INFRASTRUCTURE
+          </span>
+          <span class="text-xs text-slate-400 font-mono">ENGINEERED BY GETOCORE × TEEM TECH</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Proprietary Telemetry Engine &amp; Cryptographic Security
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Cloud-native, zero-plaintext architecture designed to operate seamlessly across high-density and low-network areas.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">📱</div>
+            <h3 class="text-base font-bold text-white">Offline-First Mobile PWA</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Equipped with SAN Malami's authentic photo logo for instant visual identification on agents' home screens. Functions fully offline in remote riverine and border areas (Sakaba, Danko-Wasagu, Bagudo), syncing automatically upon signal acquisition.
+            </p>
+          </div>
+
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">📍</div>
+            <h3 class="text-base font-bold text-white">Dual GPS &amp; IReV Parity</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Automated scraper audits public INEC IReV uploads against our internal PU Agent EC8As. Any electronic transmission originating more than 15 meters from the physical Polling Unit coordinates triggers an immediate Tampering Alert for legal challenge.
+            </p>
+          </div>
+
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold">🤖</div>
+            <h3 class="text-base font-bold text-white">Bilingual AI Legal Copilot</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Real-time assistant available in English and Hausa across all tiers. Provides instantaneous guidance on BVAS bypass prevention, Section 51 protest procedures, and emergency legal hotline dispatch (0800-ADC-MALAMI).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
+        <span>Prepared for Abubakar Malami, SAN, CON &bull; ADC Kebbi 2027</span>
+        <span>Powered by GetoCore Digital Innovation in partnership with TEEM TECH Solution &bull; Slide 4 of 8</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: CONSTITUTIONAL SPREAD & MARGIN -->
+    <section class="slide-page bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col justify-between min-h-[580px]">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-6">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-black border border-emerald-500/40">
+            SLIDE 5 &bull; STATUTORY WINNING CRITERIA
+          </span>
+          <span class="text-xs text-slate-400 font-mono">CONSTITUTIONAL SECTION 179(2) &amp; SECTION 51</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Electoral Mathematics: Insurmountable Lead &amp; 25% Spread
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Fulfilling both mandatory constitutional tests on the first ballot to prevent court litigation.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+            <h3 class="text-base font-bold text-emerald-400 flex items-center gap-2">
+              <span>Section 179(2) 25% Spread Across 14+ LGAs</span>
+            </h3>
+            <div class="space-y-2 text-xs text-slate-300 leading-relaxed">
+              <p>
+                <strong>The Statutory Rule:</strong> The candidate must win the highest number of votes AND poll not less than 25% of votes cast in at least two-thirds of all LGAs in the State (at least 14 of 21 LGAs).
+              </p>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 space-y-1 font-mono text-[11px]">
+                <div class="text-emerald-400 font-bold">ADC Projected Coalition Map:</div>
+                <div>• Kebbi Central Base: Birnin Kebbi, Gwandu, Jega, Kalgo, Aliero, Maiyama, Bunza (7/7 LGAs)</div>
+                <div>• Southern Coalition: Zuru, Danko-Wasagu, Sakaba, Fakai, Yauri, Ngaski, Shanga (7/7 LGAs)</div>
+                <div>• Northern Inroads: Argungu, Augie, Dandi, Arewa, Suru, Bagudo (6/7 LGAs)</div>
+                <div class="text-amber-300 font-bold mt-1">Total Target: 21 of 21 LGAs exceeding 25% threshold!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+            <h3 class="text-base font-bold text-amber-400 flex items-center gap-2">
+              <span>Section 51 Margin of Lead Surplus Barrier</span>
+            </h3>
+            <div class="space-y-2 text-xs text-slate-300 leading-relaxed">
+              <p>
+                <strong>The Margin of Lead Principle:</strong> When the margin between the two leading candidates is less than total collected PVCs in cancelled polling units, election must be declared inconclusive.
+              </p>
+              <div class="p-3 bg-emerald-950/40 rounded-xl border border-emerald-600/40 space-y-2">
+                <div class="text-xs font-bold text-white">Simulated 2027 Gubernatorial Results:</div>
+                <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
+                  <div>ADC Projected Votes: <strong class="text-emerald-400">468,540</strong></div>
+                  <div>APC Projected Votes: <strong class="text-slate-300">341,210</strong></div>
+                  <div>Lead Margin: <strong class="text-emerald-400">+127,330</strong></div>
+                  <div>Cancelled PVCs: <strong class="text-rose-400">52,300</strong></div>
+                </div>
+                <div class="pt-2 border-t border-emerald-800/40 text-xs font-bold text-emerald-300">
+                  Surplus Buffer: +75,030 Votes above cancelled PVCs! Inconclusive declaration legally impossible.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
+        <span>Prepared for Abubakar Malami, SAN, CON &bull; ADC Kebbi 2027</span>
+        <span>Powered by GetoCore Digital Innovation in partnership with TEEM TECH Solution &bull; Slide 5 of 8</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: IMPLEMENTATION ROADMAP -->
+    <section class="slide-page bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col justify-between min-h-[580px]">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-6">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-black border border-emerald-500/40">
+            SLIDE 6 &bull; EXECUTION ROADMAP
+          </span>
+          <span class="text-xs text-slate-400 font-mono">3-PHASE TIMELINE TO ELECTION DAY</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Implementation Timeline &amp; Statewide Mock Simulation
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          A disciplined, battle-tested rollout ensuring zero operational friction on Election Day.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-3">
+            <div class="text-xs font-black text-blue-400 uppercase font-mono">Phase 1 &bull; T - 60 Days</div>
+            <h3 class="text-base font-bold text-white">Platform Setup &amp; Logistics</h3>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li>• Finalize cloud server clusters & PWA installation scripts.</li>
+              <li>• Print 4,200 laminated QR-code photo ID badges.</li>
+              <li>• Procure 3,745 certified 10,000mAh backup power banks.</li>
+              <li>• Outfitting of Birnin Kebbi Central Situation Room (Starlink + screens).</li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-3">
+            <div class="text-xs font-black text-amber-400 uppercase font-mono">Phase 2 &bull; T - 21 Days</div>
+            <h3 class="text-base font-bold text-white">Agent Training &amp; Mock Dry-Run</h3>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li>• Zonal cascading workshops for 3,745 PU agents and 225 RA supervisors.</li>
+              <li>• Full statewide mock simulation test across all 21 LGAs.</li>
+              <li>• Live BVAS mock accreditation and photo upload stress test.</li>
+              <li>• SMS and satellite comms fallback verification.</li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-950 p-6 rounded-2xl border border-emerald-800/60 space-y-3">
+            <div class="text-xs font-black text-emerald-400 uppercase font-mono">Phase 3 &bull; Election Week</div>
+            <h3 class="text-base font-bold text-white">D-Day Live Command &amp; Legal Shield</h3>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li>• 07:00 AM: Confirmation of INEC PO arrival & BVAS zero-reading.</li>
+              <li>• 02:30 PM: Queue cutoff strict enforcement.</li>
+              <li>• 04:30 PM: Form EC8A capture and instant Situation Room transmission.</li>
+              <li>• 48-Hour continuous collation defense until Form EC8D Declaration.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
+        <span>Prepared for Abubakar Malami, SAN, CON &bull; ADC Kebbi 2027</span>
+        <span>Powered by GetoCore Digital Innovation in partnership with TEEM TECH Solution &bull; Slide 6 of 8</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: FINANCIAL IMPLICATIONS (MASTER BUDGET) -->
+    <section class="slide-page bg-slate-900 border-2 border-amber-500/40 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col justify-between min-h-[580px]">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-6">
+          <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-black border border-amber-500/40">
+            SLIDE 7 &bull; FINANCIAL IMPLICATIONS
+          </span>
+          <span class="text-xs text-slate-400 font-mono">COMPLETE BUDGET &amp; TRANCHE CASH-FLOW</span>
+        </div>
+
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Project Financial Implication: ₦329,000,000
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-0.5">
+              Comprehensive turnkey budget for 3,745 Polling Units, 225 Wards, and 21 LGAs (₦87,850 per PU).
+            </p>
+          </div>
+          <div class="text-right">
+            <span class="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-lg border border-emerald-800/60">
+              High-ROI Mandate Defense
+            </span>
+          </div>
+        </div>
+
+        <!-- Cost Center Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-2.5">
+            <div class="text-xs font-bold text-white flex justify-between border-b border-slate-800 pb-2">
+              <span>Cost Center</span>
+              <span>Amount (NGN ₦)</span>
+            </div>
+            <div class="space-y-1.5 text-xs">
+              <div class="flex justify-between text-slate-300">
+                <span>1. PU Agent Network (3,745 PUs + 375 Runners)</span>
+                <span class="font-mono font-bold text-white">₦121,725,000</span>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>2. Ward RA Supervisors &amp; RAC Escorts (225 Wards)</span>
+                <span class="font-mono font-bold text-white">₦23,625,000</span>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>3. LGA Collation &amp; Legal Shield Leads (21 LGAs)</span>
+                <span class="font-mono font-bold text-white">₦14,175,000</span>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>4. Central Situation Room HQ (Birnin Kebbi)</span>
+                <span class="font-mono font-bold text-white">₦37,600,000</span>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>5. Software Engine &amp; Cloud Infra (GetoCore × TEEM TECH)</span>
+                <span class="font-mono font-bold text-emerald-400">₦50,000,000</span>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>6. Field Kits, QR Badges &amp; 3,745 Power Banks</span>
+                <span class="font-mono font-bold text-white">₦44,082,500</span>
+              </div>
+              <div class="flex justify-between text-slate-300">
+                <span>7. CTC Procurement, Tribunal Vault &amp; Contingency</span>
+                <span class="font-mono font-bold text-white">₦37,792,500</span>
+              </div>
+            </div>
+            <div class="pt-2 border-t-2 border-slate-700 flex justify-between text-sm font-black text-amber-300">
+              <span>GRAND TOTAL</span>
+              <span class="font-mono">₦329,000,000</span>
+            </div>
+          </div>
+
+          <!-- Phased Disbursement Tranches -->
+          <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-3">
+            <h3 class="text-xs font-bold text-white uppercase tracking-wider border-b border-slate-800 pb-2">
+              Phased 3-Tranche Disbursement Framework
+            </h3>
+            <div class="space-y-3 text-xs">
+              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="flex justify-between font-bold text-blue-400">
+                  <span>Tranche 1: Mobilization (40%)</span>
+                  <span class="font-mono">₦131,600,000</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1">
+                  Due at contract sign-off (T - 60 Days). Covers software setup, cloud servers, power banks, ID badges, Situation Room outfitting.
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="flex justify-between font-bold text-amber-400">
+                  <span>Tranche 2: Field Simulation (35%)</span>
+                  <span class="font-mono">₦115,150,000</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1">
+                  Due upon platform readiness (T - 21 Days). Covers training stipends for 3,745 agents + 225 supervisors, data recharges, 21-LGA mock dry run.
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="flex justify-between font-bold text-emerald-400">
+                  <span>Tranche 3: D-Day Operations (25%)</span>
+                  <span class="font-mono">₦82,250,000</span>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-1">
+                  Due 5 days before election (T - 5 Days). Covers Election Day agent allowances, RAC transport, LGA counsel retainers, CTC legal procurement.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
+        <span>Prepared for Abubakar Malami, SAN, CON &bull; ADC Kebbi 2027</span>
+        <span>Powered by GetoCore Digital Innovation in partnership with TEEM TECH Solution &bull; Slide 7 of 8</span>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: GOVERNANCE & CALL TO ACTION -->
+    <section class="slide-page bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col justify-between min-h-[580px]">
+      <div>
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-6">
+          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-black border border-emerald-500/40">
+            SLIDE 8 &bull; GOVERNANCE &amp; COMMISSIONING
+          </span>
+          <span class="text-xs text-slate-400 font-mono">ACCOUNTABILITY CONTROLS</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+          Financial Accountability &amp; Executive Commissioning
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1">
+          Strict financial controls, milestone verification, and immediate next steps for project kickoff.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-3">
+            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wider">Financial Governance Safeguards</h3>
+            <ul class="space-y-2.5 text-xs text-slate-300">
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Direct Account Crediting:</strong> All agent allowances disbursed directly via verified BVN / phone number linked to assigned Polling Unit code.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Milestone-Linked Tranche Release:</strong> Tranches released strictly upon verified verification (e.g., 100% agent accreditation before Tranche 2).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Permanent Capital Assets:</strong> Laptops, video walls, solar inverters, and Starlink terminals remain permanent assets of the campaign/foundation.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span><strong>Real-Time Spend Tracking:</strong> Transparent dashboard accounting for every naira spent across all 21 Local Government Areas.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+            <h3 class="text-sm font-bold text-amber-400 uppercase tracking-wider">Immediate Executive Action</h3>
+            <div class="space-y-2.5 text-xs text-slate-300">
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">1</span>
+                <span>Executive Sign-off on the ₦329M Situation Room & Mandate Defense Budget.</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">2</span>
+                <span>Formal commissioning of GetoCore Digital Innovation & TEEM TECH Solution as Lead Technical Partners.</span>
+              </div>
+              <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">3</span>
+                <span>Establishment of Birnin Kebbi Situation Room facility lease and Khadimiyya Foundation integration.</span>
+              </div>
+            </div>
+
+            <!-- IT Technical Officer Contact Card -->
+            <div class="p-3 bg-slate-900/90 rounded-xl border border-emerald-500/30 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div>
+                <span class="text-slate-400 text-[10px] block">Lead IT Technical Officer (GetoCore × TEEM TECH):</span>
+                <strong class="text-emerald-400 font-bold">Fatima Sulaiman Umar</strong>
+              </div>
+              <div class="text-amber-400 font-mono text-[11px] font-bold">
+                Hotlines: 08035533332 / 09035328748
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-emerald-950/50 border border-emerald-600/40 text-xs text-emerald-300 font-semibold text-center">
+              "Victory is not won in court; it is mathematically and forensically cemented in the Situation Room."
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-500">
+        <span>Prepared for Abubakar Malami, SAN, CON &bull; ADC Kebbi 2027</span>
+        <span>Powered by GetoCore Digital Innovation × TEEM TECH Solution &bull; IT: Fatima Sulaiman Umar (08035533332 / 09035328748) &bull; Slide 8 of 8</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PRINT FOOTER SCRIPT -->
+  <script>
+    // Keyboard navigation: Left / Right arrows to scroll between slides
+    document.addEventListener('keydown', (e) => {
+      const slides = document.querySelectorAll('.slide-page');
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'smooth' });
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        window.scrollBy({ top: -window.innerHeight * 0.85, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
