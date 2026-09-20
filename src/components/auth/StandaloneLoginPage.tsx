@@ -439,20 +439,20 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
 
           {/* Role Access Summary Banner */}
           {activeSelectedUser && (
-            <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+            <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs gap-3">
+              <div className="flex items-center space-x-3 min-w-0 flex-1">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0">
                   {activeSelectedUser.role === 'SITUATION_ROOM' && <Landmark className="w-4 h-4" />}
                   {activeSelectedUser.role === 'LGA_SUPERVISOR' && <Scale className="w-4 h-4" />}
                   {activeSelectedUser.role === 'RA_SUPERVISOR' && <Building2 className="w-4 h-4" />}
                   {activeSelectedUser.role === 'PU_AGENT' && <Smartphone className="w-4 h-4" />}
                 </div>
-                <div>
-                  <div className="text-slate-200 font-bold">{activeSelectedUser.name}</div>
-                  <div className="text-[10px] text-slate-400">{activeSelectedUser.title}</div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-slate-200 font-bold truncate">{activeSelectedUser.name}</div>
+                  <div className="text-[10px] text-slate-400 truncate">{activeSelectedUser.title}</div>
                 </div>
               </div>
-              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-md border border-emerald-800/40 shrink-0 whitespace-nowrap">
                 {activeSelectedUser.badgeNumber}
               </span>
             </div>
@@ -471,40 +471,41 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
 
         </div>
 
-        {/* PWA Download Banner for Field Agents */}
-        <div className="mt-4 p-3.5 sm:p-4 rounded-2xl bg-gradient-to-r from-slate-900 via-emerald-950/40 to-slate-900 border border-amber-500/40 flex items-center justify-between shadow-xl shadow-emerald-950/40">
-          <div className="flex items-center space-x-3">
-            <div className="relative shrink-0">
+        {/* PWA Download Banner for Field Agents - Clean Responsive Stacking for Mobile */}
+        <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-slate-900 via-emerald-950/40 to-slate-900 border border-amber-500/40 shadow-xl shadow-emerald-950/40 space-y-3.5 sm:space-y-0 sm:flex sm:items-center sm:justify-between">
+          <div className="flex items-start sm:items-center space-x-3.5 min-w-0 flex-1">
+            <div className="relative shrink-0 mt-0.5 sm:mt-0">
               <img
                 src="/malami_logo.png"
                 alt="SAN Malami Official Logo"
-                className="w-11 h-11 rounded-xl object-cover border border-amber-400 shadow-md"
+                className="w-12 h-12 rounded-2xl object-cover border-2 border-amber-400 shadow-md"
               />
-              <span className="absolute -bottom-1 -right-1 bg-emerald-600 text-[8px] font-black px-1 rounded text-white border border-slate-950">
+              <span className="absolute -bottom-1 -right-1 bg-emerald-600 text-[8px] font-black px-1.5 py-0.2 rounded text-white border border-slate-950 shadow">
                 ADC
               </span>
             </div>
-            <div>
-              <div className="text-xs font-bold text-white flex items-center space-x-1.5">
-                <span>Download Mobile App for Election Day</span>
-                <span className="text-[9px] bg-amber-400/20 text-amber-300 font-black px-1.5 py-0.5 rounded border border-amber-400/40">
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+                <span className="text-xs sm:text-sm font-bold text-white">Download Mobile App</span>
+                <span className="text-[9px] bg-amber-400/20 text-amber-300 font-black px-1.5 py-0.5 rounded border border-amber-400/40 shrink-0 whitespace-nowrap">
                   SAN Malami Logo
                 </span>
               </div>
-              <p className="text-[10px] text-slate-400 leading-snug mt-0.5">
-                Install directly to home screen (Android & iOS) for instant offline PU reporting and rapid EC8A uploads.
+              <p className="text-[11px] text-slate-300 leading-snug mt-1">
+                Install directly to Android & iOS home screen for instant offline PU reporting and rapid EC8A uploads.
               </p>
             </div>
           </div>
-          <button
-            type="button"
-            onClick={() => setShowInstallModal(true)}
-            className="ml-3 px-3 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs flex items-center space-x-1.5 shrink-0 shadow-lg transition"
-          >
-            <Download className="w-3.5 h-3.5 text-slate-950" />
-            <span className="hidden sm:inline">Install App</span>
-            <span className="sm:hidden">Install</span>
-          </button>
+          <div className="pt-1 sm:pt-0 sm:pl-3">
+            <button
+              type="button"
+              onClick={() => setShowInstallModal(true)}
+              className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 active:scale-[0.98] text-slate-950 font-black text-xs flex items-center justify-center space-x-2 shrink-0 shadow-lg shadow-amber-950/50 transition whitespace-nowrap"
+            >
+              <Download className="w-3.5 h-3.5 text-slate-950 shrink-0" />
+              <span>Install App to Phone</span>
+            </button>
+          </div>
         </div>
 
       </main>

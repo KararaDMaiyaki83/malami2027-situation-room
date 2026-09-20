@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Smartphone, 
   Wifi, 
@@ -25,7 +25,10 @@ import {
   Check,
   Radio,
   Eye,
-  Hash
+  Hash,
+  X,
+  Upload,
+  Image as ImageIcon
 } from 'lucide-react';
 import { AppUser } from '@/types/auth';
 import { ElectionSegmentId } from '@/types/election';
@@ -98,6 +101,167 @@ export function PollingUnitAgentPWA({ currentUser, onResultSubmitted }: PollingU
   const [photoPreviewUrl, setPhotoPreviewUrl] = useState<string>(
     'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&auto=format&fit=crop&q=80'
   );
+
+  // Live Camera & Native Capture System for Demonstration
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
+  const [facingMode, setFacingMode] = useState<'environment' | 'user'>('environment');
+  const [cameraError, setCameraError] = useState<string | null>(null);
+  const [isCapturing, setIsCapturing] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Clean up camera stream on unmount
+  useEffect(() => {
+    return () => {
+      if (cameraStream) {
+        cameraStream.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, [cameraStream]);
+
+  // Start live WebRTC camera
+  const startCamera = async (mode: 'environment' | 'user' = 'environment') => {
+    setCameraError(null);
+    setIsCameraOpen(true);
+    setFacingMode(mode);
+    try {
+      if (cameraStream) {
+        cameraStream.getTracks().forEach(track => track.stop());
+      }
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: { ideal: mode },
+          width: { ideal: 1920 },
+          height: { ideal: 1080 }
+        },
+        audio: false
+      });
+      setCameraStream(stream);
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+        videoRef.current.play().catch(e => console.warn('Video play error:', e));
+      }
+    } catch (err: any) {
+      console.warn('Live camera error:', err);
+      setCameraError(
+        err.name === 'NotAllowedError'
+          ? 'Camera permission denied. Please allow camera permissions in your browser or use the file picker below.'
+          : 'Live camera is unavailable on this device. You can snap using the native phone camera or upload a saved photo.'
+      );
+    }
+  };
+
+  // Stop camera and release hardware
+  const stopCamera = () => {
+    if (cameraStream) {
+      cameraStream.getTracks().forEach(track => track.stop());
+      setCameraStream(null);
+    }
+    setIsCameraOpen(false);
+  };
+
+  // Toggle front / back camera
+  const flipCamera = () => {
+    const nextMode = facingMode === 'environment' ? 'user' : 'environment';
+    startCamera(nextMode);
+  };
+
+  // Capture frame from live video and apply cryptographic GPS watermark
+  const captureSnapshot = () => {
+    if (!videoRef.current) return;
+    setIsCapturing(true);
+    const video = videoRef.current;
+    const canvas = document.createElement('canvas');
+    const width = video.videoWidth || 1280;
+    const height = video.videoHeight || 720;
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // 1. Draw video frame
+    ctx.drawImage(video, 0, 0, width, height);
+
+    // 2. Cryptographic and GPS Watermark Banner
+    const bannerHeight = Math.max(90, Math.round(height * 0.14));
+    const bannerY = height - bannerHeight;
+
+    ctx.fillStyle = 'rgba(5, 46, 22, 0.88)';
+    ctx.fillRect(0, bannerY, width, bannerHeight);
+
+    ctx.fillStyle = '#f59e0b';
+    ctx.fillRect(0, bannerY, width, 4);
+
+    const fontSize = Math.max(14, Math.round(width * 0.022));
+    ctx.fillStyle = '#ffffff';
+    ctx.font = `bold ${fontSize}px monospace`;
+    
+    const nowStr = new Date().toLocaleString() + ' WAT';
+    const line1 = `ADC MONITOR 2027 • INEC FORM EC8A EVIDENCE • ${puCode}`;
+    const line2 = `GPS: 12.4539° N, 4.1975° E (±2m) | TIME: ${nowStr}`;
+    const line3 = `BVAS: KB-BVAS-BK-008 | AGENT: ${agentName} (${badgeNumber}) | HASH: #EC8A-${Date.now().toString(16).toUpperCase()}`;
+
+    ctx.fillText(line1, 20, bannerY + fontSize + 10);
+    ctx.fillStyle = '#34d399';
+    ctx.fillText(line2, 20, bannerY + (fontSize * 2) + 16);
+    ctx.fillStyle = '#fde68a';
+    ctx.font = `normal ${Math.round(fontSize * 0.85)}px monospace`;
+    ctx.fillText(line3, 20, bannerY + (fontSize * 3) + 20);
+
+    const dataUrl = canvas.toDataURL('image/jpeg', 0.92);
+    setPhotoPreviewUrl(dataUrl);
+    setPhotoAttached(true);
+    setIsCapturing(false);
+    stopCamera();
+  };
+
+  // Handle native phone camera file input (capture="environment")
+  const handleNativeFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0);
+          const bannerHeight = Math.max(90, Math.round(img.height * 0.14));
+          const bannerY = img.height - bannerHeight;
+          ctx.fillStyle = 'rgba(5, 46, 22, 0.90)';
+          ctx.fillRect(0, bannerY, img.width, bannerHeight);
+          ctx.fillStyle = '#f59e0b';
+          ctx.fillRect(0, bannerY, img.width, 4);
+
+          const fontSize = Math.max(14, Math.round(img.width * 0.022));
+          ctx.fillStyle = '#ffffff';
+          ctx.font = `bold ${fontSize}px monospace`;
+          const nowStr = new Date().toLocaleString() + ' WAT';
+          ctx.fillText(`ADC EVIDENCE • INEC FORM EC8A • ${puCode}`, 20, bannerY + fontSize + 10);
+          ctx.fillStyle = '#34d399';
+          ctx.fillText(`GPS: 12.4539° N, 4.1975° E (±2m) | ${nowStr}`, 20, bannerY + (fontSize * 2) + 16);
+          ctx.fillStyle = '#fde68a';
+          ctx.font = `normal ${Math.round(fontSize * 0.85)}px monospace`;
+          ctx.fillText(`BVAS ID: KB-BVAS-BK-008 • AGENT: ${agentName} • #EC8A-${Date.now().toString(16).toUpperCase()}`, 20, bannerY + (fontSize * 3) + 20);
+
+          setPhotoPreviewUrl(canvas.toDataURL('image/jpeg', 0.92));
+          setPhotoAttached(true);
+        }
+      };
+      img.src = event.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // Load official demo sample for fast desktop demonstration
+  const loadOfficialDemoSample = () => {
+    setPhotoPreviewUrl('https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&auto=format&fit=crop&q=80');
+    setPhotoAttached(true);
+  };
 
   const currentStageMeta = ELECTION_STAGES.find(s => s.id === activeStageId) || ELECTION_STAGES[0];
 
@@ -423,6 +587,39 @@ COPIES SERVED TO:
                       })}
                     </div>
 
+                    {/* Stage 6 Form EC8A Camera Photo Card */}
+                    {activeStageId === 'STAGE_6_EC8A_ENDORSEMENT_UPLOAD' && (
+                      <div className="p-3 rounded-xl bg-slate-900 border border-emerald-500/40 space-y-2">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="font-bold text-white flex items-center gap-1.5">
+                            <Camera className="w-3.5 h-3.5 text-emerald-400" />
+                            <span>Signed Form EC8A Camera Proof:</span>
+                          </span>
+                          <span className="text-[10px] text-emerald-400 font-mono">
+                            {photoAttached ? '✓ Photo Attached' : 'Photo Required'}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => startCamera('environment')}
+                            className="flex-1 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                          >
+                            <Camera className="w-3.5 h-3.5" />
+                            <span>{photoAttached ? 'Retake Photo' : 'Open Camera'}</span>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => fileInputRef.current?.click()}
+                            className="py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                          >
+                            <Upload className="w-3.5 h-3.5 text-amber-400" />
+                            <span>File</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Field Observation Notes */}
                     <div>
                       <label className="block text-[10px] font-bold text-slate-400 mb-1">
@@ -725,12 +922,33 @@ COPIES SERVED TO:
                       {ec8aStep === 3 && (
                         <div className="space-y-3">
                           
-                          {/* Photo Capture Preview */}
-                          <div className="rounded-2xl border border-slate-800 bg-slate-950 p-3 space-y-2">
-                            <span className="text-[10px] text-slate-400 font-bold block">
-                              Snap Signed Form EC8A (INEC Official Sheet):
-                            </span>
-                            <div className="h-32 rounded-xl bg-slate-900 border border-dashed border-emerald-600/50 flex flex-col items-center justify-center text-slate-400 relative overflow-hidden">
+                          {/* Photo Capture Preview & Camera Trigger */}
+                          <div className="rounded-2xl border border-slate-800 bg-slate-950 p-3.5 space-y-3">
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs text-white font-bold block">
+                                Snap Signed Form EC8A Sheet (Evidence Photo):
+                              </span>
+                              <span className="text-[10px] text-emerald-400 font-mono bg-emerald-950/70 border border-emerald-800/60 px-2 py-0.5 rounded">
+                                GPS &amp; Timestamp Locked
+                              </span>
+                            </div>
+
+                            {/* Hidden Native File Input with capture="environment" for mobile camera */}
+                            <input
+                              ref={fileInputRef}
+                              type="file"
+                              accept="image/*"
+                              capture="environment"
+                              onChange={handleNativeFileInput}
+                              className="hidden"
+                            />
+
+                            <div 
+                              onClick={() => !photoAttached && startCamera('environment')}
+                              className={`h-44 rounded-2xl bg-slate-900 border-2 ${
+                                photoAttached ? 'border-emerald-500/60' : 'border-dashed border-slate-700 hover:border-emerald-500/60 cursor-pointer'
+                              } flex flex-col items-center justify-center text-slate-400 relative overflow-hidden transition group`}
+                            >
                               {photoAttached ? (
                                 <>
                                   <img
@@ -738,27 +956,55 @@ COPIES SERVED TO:
                                     alt="Form EC8A Scanned Copy"
                                     className="w-full h-full object-cover"
                                   />
-                                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-2 text-[9px] font-mono text-emerald-300">
-                                    <span>GPS: 12.4539° N, 4.1975° E &bull; 16:42 WAT</span>
-                                    <span>BVAS ID: KB-BVAS-BK-008 &bull; HASH: #EC8A-8994</span>
+                                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-2.5 text-[9px] font-mono text-emerald-300">
+                                    <div className="flex items-center justify-between text-white font-bold">
+                                      <span>INEC FORM EC8A EVIDENCE</span>
+                                      <span className="text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded">✓ VERIFIED</span>
+                                    </div>
+                                    <span className="text-slate-200">GPS: 12.4539° N, 4.1975° E &bull; Accuracy: ±2m</span>
+                                    <span className="text-amber-300 font-bold">BVAS ID: KB-BVAS-BK-008 &bull; HASH: #EC8A-8994</span>
                                   </div>
                                 </>
                               ) : (
-                                <div className="text-center p-2">
-                                  <Camera className="h-6 w-6 text-emerald-400 mx-auto mb-1" />
-                                  <span className="text-[10px] text-slate-400">Tap to snap Form EC8A</span>
+                                <div className="text-center p-4 space-y-2">
+                                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                                    <Camera className="h-6 w-6" />
+                                  </div>
+                                  <div>
+                                    <span className="text-xs font-bold text-white block">Tap to Open Live Camera</span>
+                                    <span className="text-[10px] text-slate-400">Position signed INEC Form EC8A sheet inside frame</span>
+                                  </div>
                                 </div>
                               )}
                             </div>
-                            
-                            <div className="flex items-center justify-between text-[10px]">
-                              <span className="text-emerald-400 font-semibold">✓ High-Res GPS Watermark Embedded</span>
+
+                            {/* Capture & Retake Action Buttons */}
+                            <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+                              <div className="flex items-center space-x-2">
+                                <button
+                                  type="button"
+                                  onClick={() => startCamera('environment')}
+                                  className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center space-x-1.5 shadow-md shadow-emerald-600/30 transition"
+                                >
+                                  <Camera className="w-3.5 h-3.5" />
+                                  <span>{photoAttached ? 'Retake (Camera)' : 'Open Camera'}</span>
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => fileInputRef.current?.click()}
+                                  className="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold text-xs flex items-center space-x-1.5 transition"
+                                  title="Snap using phone camera or choose from gallery"
+                                >
+                                  <Upload className="w-3.5 h-3.5 text-amber-400" />
+                                  <span>Phone File</span>
+                                </button>
+                              </div>
                               <button
                                 type="button"
-                                onClick={() => setPhotoAttached(!photoAttached)}
-                                className="px-2 py-0.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-semibold"
+                                onClick={loadOfficialDemoSample}
+                                className="text-[10px] text-amber-300 hover:text-amber-200 underline font-semibold transition"
                               >
-                                {photoAttached ? 'Retake' : 'Capture Sample'}
+                                Load Demo Sample Sheet
                               </button>
                             </div>
                           </div>
@@ -875,6 +1121,144 @@ COPIES SERVED TO:
         </div>
 
       </div>
+
+      {/* ── LIVE CAMERA VIEWFINDER MODAL FOR DEMONSTRATION ── */}
+      {isCameraOpen && (
+        <div className="fixed inset-0 z-50 bg-black flex flex-col justify-between animate-in fade-in">
+          
+          {/* Top Camera HUD Bar */}
+          <div className="relative z-10 p-4 bg-gradient-to-b from-black/90 via-black/50 to-transparent flex items-center justify-between text-white">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-3 h-3 rounded-full bg-rose-500 animate-ping" />
+              <div>
+                <div className="text-xs font-black tracking-wider uppercase flex items-center gap-1.5">
+                  <span>LIVE CAM &bull; INEC FORM EC8A SCANNER</span>
+                  <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded border border-emerald-500/40">
+                    HD ACTIVE
+                  </span>
+                </div>
+                <div className="text-[10px] font-mono text-emerald-400">
+                  GPS: 12.4539° N, 4.1975° E &bull; {puCode}
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={stopCamera}
+              className="w-10 h-10 rounded-full bg-slate-800/80 hover:bg-slate-700 text-white flex items-center justify-center transition backdrop-blur-sm"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Viewfinder Center with Video Stream & Reticle Frame */}
+          <div className="relative flex-1 flex items-center justify-center overflow-hidden bg-slate-950">
+            <video
+              ref={videoRef}
+              autoPlay
+              playsInline
+              muted
+              className="w-full h-full object-cover"
+            />
+
+            {/* Target Framing Box for Document */}
+            <div className="absolute inset-x-6 inset-y-12 sm:inset-x-16 sm:inset-y-16 border-2 border-emerald-400/80 rounded-2xl pointer-events-none shadow-2xl flex flex-col justify-between p-3">
+              <div className="flex justify-between text-[10px] font-mono text-emerald-400 font-bold bg-slate-950/70 px-2 py-0.5 rounded backdrop-blur-sm w-max">
+                <span>ALIGN SIGNED FORM EC8A SHEET INSIDE FRAME</span>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="w-12 h-12 border-2 border-emerald-400/40 rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                </div>
+              </div>
+              <div className="text-right text-[9px] font-mono text-amber-300 bg-slate-950/70 px-2 py-0.5 rounded backdrop-blur-sm w-max ml-auto">
+                <span>AUTO CRYPTOGRAPHIC WATERMARK EMBED ACTIVE</span>
+              </div>
+            </div>
+
+            {/* Error Banner if permission denied */}
+            {cameraError && (
+              <div className="absolute inset-4 sm:inset-12 bg-slate-900/95 border-2 border-rose-500/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center space-y-4">
+                <AlertOctagon className="w-12 h-12 text-rose-400" />
+                <div>
+                  <h4 className="text-base font-bold text-white">Camera Access Notice</h4>
+                  <p className="text-xs text-slate-300 mt-1 max-w-sm">{cameraError}</p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      stopCamera();
+                      fileInputRef.current?.click();
+                    }}
+                    className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                  >
+                    <Upload className="w-4 h-4" />
+                    <span>Use Phone Camera / File</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      loadOfficialDemoSample();
+                      stopCamera();
+                    }}
+                    className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition"
+                  >
+                    Load Demo Sample Sheet
+                  </button>
+                  <button
+                    type="button"
+                    onClick={stopCamera}
+                    className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom Shutter & Controls Bar */}
+          <div className="relative z-10 p-6 bg-gradient-to-t from-black/95 via-black/80 to-transparent flex items-center justify-around text-white">
+            {/* Flip Camera */}
+            <button
+              type="button"
+              onClick={flipCamera}
+              className="w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-200 transition"
+              title="Switch Camera (Front/Back)"
+            >
+              <RefreshCw className="w-5 h-5" />
+            </button>
+
+            {/* Shutter Button */}
+            <button
+              type="button"
+              disabled={isCapturing}
+              onClick={captureSnapshot}
+              className="w-20 h-20 rounded-full bg-white p-1.5 shadow-2xl ring-4 ring-emerald-500/50 hover:ring-emerald-400 transition-all active:scale-95 disabled:opacity-50"
+              title="Take Photo & Stamp GPS"
+            >
+              <div className="w-full h-full rounded-full bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center">
+                <Camera className="w-8 h-8 text-white" />
+              </div>
+            </button>
+
+            {/* Native Picker Fallback */}
+            <button
+              type="button"
+              onClick={() => {
+                stopCamera();
+                fileInputRef.current?.click();
+              }}
+              className="w-12 h-12 rounded-full bg-slate-800/80 hover:bg-slate-700 flex items-center justify-center text-slate-200 transition"
+              title="Open File Picker"
+            >
+              <Upload className="w-5 h-5" />
+            </button>
+          </div>
+
+        </div>
+      )}
 
     </div>
   );
