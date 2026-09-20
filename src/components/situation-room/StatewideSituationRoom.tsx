@@ -187,35 +187,35 @@ export function StatewideSituationRoom({
           </div>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-            <div className="flex items-center gap-2">
-              <div className="bg-slate-950/80 border border-slate-700/80 rounded-xl p-3 text-center min-w-[120px]">
-                <div className="text-[10px] text-slate-400 uppercase font-semibold">Lead Margin</div>
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="bg-slate-950/80 border border-slate-700/80 rounded-xl p-3 text-center min-w-[120px] shrink-0">
+                <div className="text-[10px] text-slate-400 uppercase font-semibold whitespace-nowrap">Lead Margin</div>
                 <div className="text-xl font-black text-emerald-400 font-mono">+{formatNumber(leadMargin)}</div>
-                <div className="text-[10px] text-emerald-500/80">#1 Statewide</div>
+                <div className="text-[10px] text-emerald-500/80 whitespace-nowrap">#1 Statewide</div>
               </div>
-              <div className="bg-slate-950/80 border border-slate-700/80 rounded-xl p-3 text-center min-w-[120px]">
-                <div className="text-[10px] text-slate-400 uppercase font-semibold">Safety Surplus</div>
+              <div className="bg-slate-950/80 border border-slate-700/80 rounded-xl p-3 text-center min-w-[120px] shrink-0">
+                <div className="text-[10px] text-slate-400 uppercase font-semibold whitespace-nowrap">Safety Surplus</div>
                 <div className="text-xl font-black text-emerald-300 font-mono">+{formatNumber(section51Buffer)}</div>
-                <div className="text-[10px] text-slate-400">Above Cancelled</div>
+                <div className="text-[10px] text-slate-400 whitespace-nowrap">Above Cancelled</div>
               </div>
             </div>
 
-            <div className="flex sm:flex-col gap-2 justify-center">
+            <div className="flex sm:flex-col gap-2 justify-center shrink-0">
               <button
                 onClick={exportStatewideCSV}
-                className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-sm"
+                className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center justify-center gap-1.5 transition-all shadow-sm shrink-0 whitespace-nowrap"
                 title="Export Statewide Form EC8D as CSV"
               >
-                <Download className="w-4 h-4 text-emerald-400" />
-                <span>Export Form EC8D (CSV)</span>
+                <Download className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Export EC8D (CSV)</span>
               </button>
               <button
                 onClick={() => setShowPrintModal(true)}
-                className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center justify-center gap-1.5 transition-all shadow-md shadow-emerald-600/30"
+                className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center justify-center gap-1.5 transition-all shadow-md shadow-emerald-600/30 shrink-0 whitespace-nowrap"
                 title="Print Official Form EC8D State Declaration or Save as PDF"
               >
-                <Printer className="w-4 h-4" />
-                <span>Print Official Form EC8D (PDF)</span>
+                <Printer className="w-4 h-4 shrink-0" />
+                <span>Print EC8D (PDF)</span>
               </button>
             </div>
           </div>
@@ -223,69 +223,87 @@ export function StatewideSituationRoom({
       </div>
 
       {/* TOP EXECUTIVE METRICS ROW */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+      <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-3.5">
         
         {/* Reporting PUs */}
-        <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl shadow-sm">
-          <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Reporting PUs</div>
-          <div className="text-xl font-black text-white mt-1 flex items-baseline gap-1">
-            <span>{formatNumber(totalReportedPUs)}</span>
-            <span className="text-xs text-slate-400 font-normal">/ {formatNumber(totalPUs)}</span>
+        <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap">Reporting PUs</div>
+            <div className="text-xl font-black text-white mt-1 flex items-baseline gap-1">
+              <span className="font-mono">{formatNumber(totalReportedPUs)}</span>
+              <span className="text-xs text-slate-400 font-normal">/ {formatNumber(totalPUs)}</span>
+            </div>
           </div>
-          <div className="w-full bg-slate-800 rounded-full h-1.5 mt-2 overflow-hidden">
-            <div className="bg-emerald-500 h-1.5 rounded-full" style={{ width: `${collationRate}%` }}></div>
-          </div>
-          <div className="text-[10px] text-emerald-400 mt-1 flex justify-between font-mono">
-            <span>{collationRate}% Collated</span>
-            <span>21/21 LGAs</span>
+          <div className="mt-2.5">
+            <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+              <div className="bg-emerald-500 h-1.5 rounded-full" style={{ width: `${collationRate}%` }}></div>
+            </div>
+            <div className="text-[10px] text-emerald-400 mt-1 flex justify-between font-mono whitespace-nowrap">
+              <span>{collationRate}% Collated</span>
+              <span>21/21 LGAs</span>
+            </div>
           </div>
         </div>
 
         {/* ADC (Malami) */}
-        <div className="bg-slate-900 border border-emerald-500/40 p-3.5 rounded-xl shadow-sm">
-          <div className="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider flex items-center justify-between">
-            <span>ADC (Malami)</span>
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <div className="bg-slate-900 border border-emerald-500/40 p-3.5 rounded-xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-semibold text-emerald-400 uppercase tracking-wider flex items-center justify-between whitespace-nowrap">
+              <span>ADC (Malami)</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+            </div>
+            <div className="text-xl font-black text-emerald-300 mt-1 font-mono">{formatNumber(totalADC)}</div>
           </div>
-          <div className="text-xl font-black text-emerald-300 mt-1 font-mono">{formatNumber(totalADC)}</div>
-          <div className="text-[11px] text-emerald-400 mt-1 flex justify-between font-medium">
+          <div className="text-[11px] text-emerald-400 mt-2 flex justify-between font-medium whitespace-nowrap pt-1 border-t border-slate-800/60">
             <span>{adcPct}% Popular</span>
-            <span>14 LGAs Won</span>
+            <span className="font-bold">14 LGAs Won</span>
           </div>
         </div>
 
         {/* APC (Incumbent) */}
-        <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl shadow-sm">
-          <div className="text-[11px] font-semibold text-blue-400 uppercase tracking-wider">APC (Incumbent)</div>
-          <div className="text-xl font-black text-blue-300 mt-1 font-mono">{formatNumber(totalAPC)}</div>
-          <div className="text-[11px] text-slate-400 mt-1 flex justify-between">
+        <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-semibold text-blue-400 uppercase tracking-wider whitespace-nowrap">APC (Incumbent)</div>
+            <div className="text-xl font-black text-blue-300 mt-1 font-mono">{formatNumber(totalAPC)}</div>
+          </div>
+          <div className="text-[11px] text-slate-400 mt-2 flex justify-between whitespace-nowrap pt-1 border-t border-slate-800/60">
             <span>{apcPct}% Popular</span>
             <span>7 LGAs Won</span>
           </div>
         </div>
 
         {/* PDP */}
-        <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl shadow-sm">
-          <div className="text-[11px] font-semibold text-purple-400 uppercase tracking-wider">PDP</div>
-          <div className="text-xl font-black text-purple-300 mt-1 font-mono">{formatNumber(totalPDP)}</div>
-          <div className="text-[11px] text-slate-400 mt-1 flex justify-between">
+        <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-semibold text-purple-400 uppercase tracking-wider whitespace-nowrap">PDP</div>
+            <div className="text-xl font-black text-purple-300 mt-1 font-mono">{formatNumber(totalPDP)}</div>
+          </div>
+          <div className="text-[11px] text-slate-400 mt-2 flex justify-between whitespace-nowrap pt-1 border-t border-slate-800/60">
             <span>{pdpPct}% Popular</span>
             <span>0 LGAs</span>
           </div>
         </div>
 
         {/* Cancelled PVCs */}
-        <div className="bg-slate-900 border border-amber-500/40 p-3.5 rounded-xl shadow-sm">
-          <div className="text-[11px] font-semibold text-amber-400 uppercase tracking-wider">Cancelled PVCs</div>
-          <div className="text-xl font-black text-amber-300 mt-1 font-mono">{formatNumber(totalCancelledPVCs)}</div>
-          <div className="text-[10px] text-slate-400 mt-1">Across 38 Disrupted PUs</div>
+        <div className="bg-slate-900 border border-amber-500/40 p-3.5 rounded-xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-semibold text-amber-400 uppercase tracking-wider whitespace-nowrap">Cancelled PVCs</div>
+            <div className="text-xl font-black text-amber-300 mt-1 font-mono">{formatNumber(totalCancelledPVCs)}</div>
+          </div>
+          <div className="text-[10px] text-slate-400 mt-2 whitespace-nowrap pt-1 border-t border-slate-800/60">
+            Across 38 Disrupted PUs
+          </div>
         </div>
 
         {/* Rejected Ballots */}
-        <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl shadow-sm">
-          <div className="text-[11px] font-semibold text-rose-400 uppercase tracking-wider">Rejected Votes</div>
-          <div className="text-xl font-black text-rose-300 mt-1 font-mono">{formatNumber(totalRejected)}</div>
-          <div className="text-[10px] text-emerald-400 mt-1">Down 85% from 2023!</div>
+        <div className="bg-slate-900 border border-slate-800 p-3.5 rounded-xl shadow-sm flex flex-col justify-between">
+          <div>
+            <div className="text-[11px] font-semibold text-rose-400 uppercase tracking-wider whitespace-nowrap">Rejected Votes</div>
+            <div className="text-xl font-black text-rose-300 mt-1 font-mono">{formatNumber(totalRejected)}</div>
+          </div>
+          <div className="text-[10px] text-emerald-400 mt-2 whitespace-nowrap pt-1 border-t border-slate-800/60">
+            Down 85% from 2023!
+          </div>
         </div>
 
       </div>
@@ -330,59 +348,99 @@ export function StatewideSituationRoom({
 
         {/* Live Forensic Status Metrics */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800/80 mt-4">
-          <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
-            <span className="text-slate-400 block text-[10px] uppercase font-semibold">Total PUs Monitored</span>
-            <span className="text-white text-lg font-black font-mono">3,745 PUs</span>
-            <span className="text-[10px] text-emerald-400">100% Field Agent Coverage</span>
+          <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col justify-between">
+            <span className="text-slate-400 block text-[10px] uppercase font-semibold whitespace-nowrap">Total PUs Monitored</span>
+            <span className="text-white text-lg font-black font-mono my-0.5">3,745 PUs</span>
+            <span className="text-[10px] text-emerald-400 whitespace-nowrap">100% Field Coverage</span>
           </div>
-          <div className="p-3 bg-slate-950 rounded-xl border border-emerald-500/30">
-            <span className="text-emerald-400 block text-[10px] uppercase font-semibold">100% Verified Matches</span>
-            <span className="text-emerald-300 text-lg font-black font-mono">3,721 PUs</span>
-            <span className="text-[10px] text-emerald-400 font-semibold">99.4% Dual Certified</span>
+          <div className="p-3 bg-slate-950 rounded-xl border border-emerald-500/30 flex flex-col justify-between">
+            <span className="text-emerald-400 block text-[10px] uppercase font-semibold whitespace-nowrap">Verified Matches</span>
+            <span className="text-emerald-300 text-lg font-black font-mono my-0.5">3,721 PUs</span>
+            <span className="text-[10px] text-emerald-400 font-semibold whitespace-nowrap">99.4% Dual Certified</span>
           </div>
-          <div className="p-3 bg-slate-950 rounded-xl border border-cyan-500/30">
-            <span className="text-cyan-400 block text-[10px] uppercase font-semibold">GPS Geo-Fence Tolerance</span>
-            <span className="text-cyan-300 text-lg font-black font-mono">&le; 15m Passed</span>
-            <span className="text-[10px] text-slate-400">Physical PU Verification</span>
+          <div className="p-3 bg-slate-950 rounded-xl border border-cyan-500/30 flex flex-col justify-between">
+            <span className="text-cyan-400 block text-[10px] uppercase font-semibold whitespace-nowrap">GPS Geo-Fence</span>
+            <span className="text-cyan-300 text-lg font-black font-mono my-0.5">&le; 15m Passed</span>
+            <span className="text-[10px] text-slate-400 whitespace-nowrap">Physical PU Verified</span>
           </div>
-          <div className="p-3 bg-slate-950 rounded-xl border border-amber-500/30">
-            <span className="text-amber-400 block text-[10px] uppercase font-semibold">Tribunal Intercept Alerts</span>
-            <span className="text-amber-300 text-lg font-black font-mono">24 PUs Flagged</span>
-            <span className="text-[10px] text-amber-400">Form EC40G Affidavits Ready</span>
+          <div className="p-3 bg-slate-950 rounded-xl border border-amber-500/30 flex flex-col justify-between">
+            <span className="text-amber-400 block text-[10px] uppercase font-semibold whitespace-nowrap">Tribunal Alerts</span>
+            <span className="text-amber-300 text-lg font-black font-mono my-0.5">24 PUs Flagged</span>
+            <span className="text-[10px] text-amber-400 whitespace-nowrap">EC40G Affidavits Ready</span>
           </div>
         </div>
       </div>
 
-      {/* POPULAR VOTE PROGRESS BAR */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-3">
-        <div className="flex justify-between items-center text-xs">
+      {/* POPULAR VOTE PROGRESS & CANDIDATE BREAKDOWN */}
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
           <div className="font-bold text-white flex items-center gap-2">
-            <span>Statewide Popular Vote Tally</span>
+            <span className="text-sm">Statewide Popular Vote Tally</span>
             <span className="text-slate-400 font-normal">({formatNumber(totalValid)} Total Valid Votes)</span>
           </div>
-          <div className="text-slate-400 font-mono">
+          <div className="text-slate-400 font-mono text-xs">
             ADC Lead: <strong className="text-emerald-400">+{formatNumber(leadMargin)}</strong> ({((leadMargin / totalValid) * 100).toFixed(1)}% Gap)
           </div>
         </div>
 
-        <div className="h-6 w-full rounded-lg overflow-hidden flex bg-slate-800 shadow-inner">
+        {/* Candidate Score Cards (Prevents text squishing inside small bar percentages) */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 bg-slate-950 rounded-xl border border-emerald-500/40 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-emerald-500 shrink-0"></span>
+              <div>
+                <div className="font-bold text-white text-xs">ADC (Abubakar Malami, SAN)</div>
+                <div className="text-[10px] text-emerald-400">{formatNumber(totalADC)} votes &bull; 14 LGAs</div>
+              </div>
+            </div>
+            <span className="text-base font-black text-emerald-300 font-mono">{adcPct}%</span>
+          </div>
+
+          <div className="p-3 bg-slate-950 rounded-xl border border-blue-500/30 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-blue-500 shrink-0"></span>
+              <div>
+                <div className="font-bold text-white text-xs">APC (Nasir Idris)</div>
+                <div className="text-[10px] text-slate-400">{formatNumber(totalAPC)} votes &bull; 7 LGAs</div>
+              </div>
+            </div>
+            <span className="text-base font-black text-blue-300 font-mono">{apcPct}%</span>
+          </div>
+
+          <div className="p-3 bg-slate-950 rounded-xl border border-purple-500/30 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-purple-500 shrink-0"></span>
+              <div>
+                <div className="font-bold text-white text-xs">PDP (Aminu Bande)</div>
+                <div className="text-[10px] text-slate-400">{formatNumber(totalPDP)} votes &bull; 0 LGAs</div>
+              </div>
+            </div>
+            <span className="text-base font-black text-purple-300 font-mono">{pdpPct}%</span>
+          </div>
+        </div>
+
+        {/* Visual Progress Bar */}
+        <div className="h-6 w-full rounded-xl overflow-hidden flex bg-slate-800 shadow-inner">
           <div 
             style={{ width: `${adcPct}%` }} 
-            className="bg-emerald-600 hover:bg-emerald-500 transition-all flex items-center justify-center text-[10px] font-black text-white"
+            className="bg-emerald-600 hover:bg-emerald-500 transition-all flex items-center justify-center text-[10px] font-black text-white px-2 truncate"
+            title={`ADC: ${adcPct}% (${formatNumber(totalADC)} votes)`}
           >
             ADC {adcPct}%
           </div>
           <div 
             style={{ width: `${apcPct}%` }} 
-            className="bg-blue-600 hover:bg-blue-500 transition-all flex items-center justify-center text-[10px] font-black text-white"
+            className="bg-blue-600 hover:bg-blue-500 transition-all flex items-center justify-center text-[10px] font-black text-white px-2 truncate"
+            title={`APC: ${apcPct}% (${formatNumber(totalAPC)} votes)`}
           >
             APC {apcPct}%
           </div>
           <div 
             style={{ width: `${pdpPct}%` }} 
-            className="bg-purple-600 hover:bg-purple-500 transition-all flex items-center justify-center text-[9px] font-black text-white"
+            className="bg-purple-600 hover:bg-purple-500 transition-all flex items-center justify-center text-[9px] font-black text-white px-1 truncate"
+            title={`PDP: ${pdpPct}% (${formatNumber(totalPDP)} votes)`}
           >
-            PDP {pdpPct}%
+            {Number(pdpPct) >= 5 ? `PDP ${pdpPct}%` : `${pdpPct}%`}
           </div>
         </div>
       </div>
@@ -396,46 +454,47 @@ export function StatewideSituationRoom({
             <p className="text-xs text-slate-400">Tabulated summation of all 21 Local Government Collation Centers across Kebbi State</p>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap">
-            {/* View Mode Toggle */}
-            <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-2.5 flex-wrap">
+            {/* 1. View Mode Toggle Pill */}
+            <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800 shrink-0">
               <button
                 onClick={() => setViewMode('TABULAR_EC8D')}
-                className={`px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
                   viewMode === 'TABULAR_EC8D'
-                    ? 'bg-emerald-600 text-white shadow'
+                    ? 'bg-emerald-600 text-white shadow font-bold'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <Table className="w-3.5 h-3.5" />
+                <Table className="w-3.5 h-3.5 shrink-0" />
                 <span>Form EC8D Table</span>
               </button>
               <button
                 onClick={() => setViewMode('CARDS')}
-                className={`px-3 py-1 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all shrink-0 whitespace-nowrap ${
                   viewMode === 'CARDS'
-                    ? 'bg-emerald-600 text-white shadow'
+                    ? 'bg-emerald-600 text-white shadow font-bold'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
-                <LayoutGrid className="w-3.5 h-3.5" />
+                <LayoutGrid className="w-3.5 h-3.5 shrink-0" />
                 <span>Cards Grid</span>
               </button>
             </div>
 
-            {/* Zone Filter Buttons */}
-            <div className="flex items-center gap-1">
-              <span className="text-xs text-slate-400 mr-1 flex items-center gap-1">
-                <Filter className="w-3.5 h-3.5" /> Zone:
+            {/* 2. Zone Filter Pill */}
+            <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800 shrink-0">
+              <span className="text-xs text-slate-400 px-2 flex items-center gap-1 shrink-0 whitespace-nowrap">
+                <Filter className="w-3 h-3 text-slate-500 shrink-0" />
+                <span>Zone:</span>
               </span>
               {(['ALL', 'Central', 'North', 'South'] as const).map(z => (
                 <button
                   key={z}
                   onClick={() => setZoneFilter(z)}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
+                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition-all shrink-0 whitespace-nowrap ${
                     zoneFilter === z 
-                      ? 'bg-emerald-600 text-white shadow' 
-                      : 'bg-slate-800 text-slate-400 hover:text-white'
+                      ? 'bg-emerald-600 text-white shadow font-bold' 
+                      : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
                   }`}
                 >
                   {z === 'ALL' ? 'All' : z}
@@ -443,23 +502,25 @@ export function StatewideSituationRoom({
               ))}
             </div>
 
-            {/* Two Export Buttons */}
-            <button
-              onClick={exportStatewideCSV}
-              className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
-              title="Export Form EC8D as CSV Spreadsheet"
-            >
-              <Download className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Export CSV</span>
-            </button>
-            <button
-              onClick={() => setShowPrintModal(true)}
-              className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/30"
-              title="Print Official Form EC8D or Save as PDF"
-            >
-              <Printer className="w-3.5 h-3.5" />
-              <span>Print Form EC8D (PDF)</span>
-            </button>
+            {/* 3. Export Actions Pill */}
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={exportStatewideCSV}
+                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm shrink-0 whitespace-nowrap"
+                title="Export Form EC8D as CSV Spreadsheet"
+              >
+                <Download className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span>Export CSV</span>
+              </button>
+              <button
+                onClick={() => setShowPrintModal(true)}
+                className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/30 shrink-0 whitespace-nowrap"
+                title="Print Official Form EC8D or Save as PDF"
+              >
+                <Printer className="w-3.5 h-3.5 shrink-0" />
+                <span>Print EC8D (PDF)</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -475,25 +536,25 @@ export function StatewideSituationRoom({
               </span>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-slate-800">
               <table className="w-full text-left text-xs font-mono">
                 <thead className="bg-slate-900/90 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
                   <tr>
-                    <th className="p-2.5">S/N</th>
-                    <th className="p-2.5">LGA Name</th>
-                    <th className="p-2.5 text-center">Zone</th>
-                    <th className="p-2.5 text-center">PUs</th>
-                    <th className="p-2.5 text-right text-cyan-400">Reg. Voters</th>
-                    <th className="p-2.5 text-right text-blue-300">BVAS Accred.</th>
-                    <th className="p-2.5 text-right text-emerald-400 font-black">ADC (Malami)</th>
-                    <th className="p-2.5 text-right text-blue-400">APC (Idris)</th>
-                    <th className="p-2.5 text-right text-purple-400">PDP</th>
-                    <th className="p-2.5 text-right text-rose-400">Rej</th>
-                    <th className="p-2.5 text-right text-white font-bold">Total Valid</th>
-                    <th className="p-2.5 text-right font-sans">Margin</th>
-                    <th className="p-2.5 text-center font-sans">25% Spread</th>
-                    <th className="p-2.5 text-right text-amber-400">Cancelled PVCs</th>
-                    <th className="p-2.5 text-center font-sans">Action</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap">S/N</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap font-sans">LGA Name</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-center font-sans">Zone</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-center">PUs</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-cyan-400">Reg. Voters</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-blue-300">BVAS Accred.</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-emerald-400 font-black">ADC (Malami)</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-blue-400">APC (Idris)</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-purple-400">PDP</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-rose-400">Rej</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-white font-bold">Total Valid</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right font-sans">Margin</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-center font-sans">25% Spread</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-amber-400">Cancelled PVCs</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-center font-sans">Action</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-800/80 text-slate-300 text-[11px]">
@@ -508,27 +569,27 @@ export function StatewideSituationRoom({
                         key={lga.id}
                         className="hover:bg-slate-800/40 transition-colors"
                       >
-                        <td className="p-2 text-slate-500">{idx + 1}</td>
-                        <td className="p-2 font-semibold text-white font-sans flex items-center gap-1.5">
+                        <td className="px-3 py-2.5 whitespace-nowrap text-slate-500">{idx + 1}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap font-semibold text-white font-sans flex items-center gap-1.5">
                           <span>{lga.name}</span>
                           {lga.status === 'AUDIT_ALERT' && (
-                            <span className="w-2 h-2 rounded-full bg-amber-400" title="Audit Alert"></span>
+                            <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" title="Audit Alert"></span>
                           )}
                         </td>
-                        <td className="p-2 text-center text-slate-400">{lga.zone}</td>
-                        <td className="p-2 text-center text-slate-300">{lga.reportedPUs}/{lga.totalPUs}</td>
-                        <td className="p-2 text-right text-slate-400">{formatNumber(lga.registeredVoters)}</td>
-                        <td className="p-2 text-right text-slate-300">{formatNumber(lga.bivasAccredited)}</td>
-                        <td className="p-2 text-right font-black text-emerald-400">{formatNumber(lga.adcVotes)}</td>
-                        <td className="p-2 text-right text-blue-400">{formatNumber(lga.apcVotes)}</td>
-                        <td className="p-2 text-right text-purple-400">{formatNumber(lga.pdpVotes)}</td>
-                        <td className="p-2 text-right text-rose-400">{formatNumber(lga.rejectedVotes)}</td>
-                        <td className="p-2 text-right font-bold text-white">{formatNumber(valid)}</td>
-                        <td className={`p-2 text-right font-bold ${isAdcLeading ? 'text-emerald-400' : 'text-blue-400'}`}>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-center text-slate-400 font-sans">{lga.zone}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-center text-slate-300">{lga.reportedPUs}/{lga.totalPUs}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-slate-400">{formatNumber(lga.registeredVoters)}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-slate-300">{formatNumber(lga.bivasAccredited)}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right font-black text-emerald-400">{formatNumber(lga.adcVotes)}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-blue-400">{formatNumber(lga.apcVotes)}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-purple-400">{formatNumber(lga.pdpVotes)}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-rose-400">{formatNumber(lga.rejectedVotes)}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right font-bold text-white">{formatNumber(valid)}</td>
+                        <td className={`px-3 py-2.5 whitespace-nowrap text-right font-bold ${isAdcLeading ? 'text-emerald-400' : 'text-blue-400'}`}>
                           {isAdcLeading ? `+${formatNumber(lga.leadMargin)}` : formatNumber(lga.leadMargin)}
                         </td>
-                        <td className="p-2 text-center">
-                          <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${
+                        <td className="px-3 py-2.5 whitespace-nowrap text-center">
+                          <span className={`px-2 py-0.5 rounded text-[9px] font-bold inline-block whitespace-nowrap ${
                             meets25 
                               ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
                               : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
@@ -536,11 +597,11 @@ export function StatewideSituationRoom({
                             {meets25 ? `YES (${share}%)` : `NO (${share}%)`}
                           </span>
                         </td>
-                        <td className="p-2 text-right text-amber-400">{formatNumber(lga.cancelledPVCs)}</td>
-                        <td className="p-2 text-center">
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-amber-400">{formatNumber(lga.cancelledPVCs)}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-center">
                           <button
                             onClick={() => onSelectLGAForChain(lga.name)}
-                            className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-sans font-semibold"
+                            className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-sans font-semibold transition whitespace-nowrap border border-slate-700/60"
                           >
                             Inspect Chain →
                           </button>
@@ -549,25 +610,25 @@ export function StatewideSituationRoom({
                     );
                   })}
                 </tbody>
-                <tfoot className="bg-slate-900 font-bold text-xs border-t border-slate-700">
+                <tfoot className="bg-slate-900 font-bold text-xs border-t-2 border-slate-700">
                   <tr>
-                    <td colSpan={3} className="p-2.5 text-white font-sans uppercase">
+                    <td colSpan={3} className="px-3 py-3 whitespace-nowrap text-white font-sans uppercase">
                       STATEWIDE TOTALS ({lgas.length} LGAs)
                     </td>
-                    <td className="p-2 text-center text-slate-300">{totalReportedPUs}/{totalPUs}</td>
-                    <td className="p-2 text-right text-slate-300">{formatNumber(totalRegStatewide)}</td>
-                    <td className="p-2 text-right text-slate-300">{formatNumber(totalBivasStatewide)}</td>
-                    <td className="p-2 text-right font-black text-emerald-400 text-sm">{formatNumber(totalADC)}</td>
-                    <td className="p-2 text-right font-black text-blue-400 text-sm">{formatNumber(totalAPC)}</td>
-                    <td className="p-2 text-right font-black text-purple-400">{formatNumber(totalPDP)}</td>
-                    <td className="p-2 text-right font-black text-rose-400">{formatNumber(totalRejected)}</td>
-                    <td className="p-2 text-right font-black text-white text-sm">{formatNumber(totalValid)}</td>
-                    <td className="p-2 text-right font-black text-emerald-400 text-sm">+{formatNumber(leadMargin)}</td>
-                    <td className="p-2 text-center text-emerald-400 font-sans">
+                    <td className="px-3 py-3 whitespace-nowrap text-center text-slate-300">{totalReportedPUs}/{totalPUs}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-slate-300">{formatNumber(totalRegStatewide)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-slate-300">{formatNumber(totalBivasStatewide)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right font-black text-emerald-400 text-sm">{formatNumber(totalADC)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right font-black text-blue-400 text-sm">{formatNumber(totalAPC)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right font-black text-purple-400">{formatNumber(totalPDP)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right font-black text-rose-400">{formatNumber(totalRejected)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right font-black text-white text-sm">{formatNumber(totalValid)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right font-black text-emerald-400 text-sm">+{formatNumber(leadMargin)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-center text-emerald-400 font-sans">
                       {lgasMeeting25Pct}/21 MET
                     </td>
-                    <td className="p-2 text-right font-black text-amber-400">{formatNumber(totalCancelledPVCs)}</td>
-                    <td className="p-2 text-center text-emerald-400 font-sans">RETURNED</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right font-black text-amber-400">{formatNumber(totalCancelledPVCs)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-center text-emerald-400 font-sans">RETURNED</td>
                   </tr>
                 </tfoot>
               </table>

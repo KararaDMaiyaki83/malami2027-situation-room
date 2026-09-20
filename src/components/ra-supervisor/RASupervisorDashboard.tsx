@@ -359,20 +359,20 @@ export function RASupervisorDashboard({
             <div className="flex items-center gap-2">
               <button
                 onClick={exportWardCSV}
-                className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
+                className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm shrink-0 whitespace-nowrap"
                 title="Export Form EC8B as CSV Spreadsheet"
               >
-                <Download className="w-4 h-4 text-emerald-400" />
-                <span>Export Form EC8B (CSV)</span>
+                <Download className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Export EC8B (CSV)</span>
               </button>
               
               <button
                 onClick={() => setShowPrintModal(true)}
-                className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/30"
+                className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/30 shrink-0 whitespace-nowrap"
                 title="Print Official Form EC8B or Save as PDF"
               >
-                <Printer className="w-4 h-4" />
-                <span>Print Official Form EC8B (PDF)</span>
+                <Printer className="w-4 h-4 shrink-0" />
+                <span>Print EC8B (PDF)</span>
               </button>
             </div>
           </div>
@@ -414,56 +414,56 @@ export function RASupervisorDashboard({
               <table className="w-full text-left text-xs font-mono">
                 <thead className="bg-slate-900/90 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
                   <tr>
-                    <th className="p-2.5">PU Code</th>
-                    <th className="p-2.5">Polling Unit Name</th>
-                    <th className="p-2.5 font-sans">Field Agent</th>
-                    <th className="p-2.5 text-right text-cyan-400">BVAS</th>
-                    <th className="p-2.5 text-right text-emerald-400 font-black">ADC</th>
-                    <th className="p-2.5 text-right text-blue-400">APC</th>
-                    <th className="p-2.5 text-right text-purple-400">PDP</th>
-                    <th className="p-2.5 text-right text-rose-400">Rej</th>
-                    <th className="p-2.5 text-right text-white font-bold">Total</th>
-                    <th className="p-2.5 text-right font-sans">Lead</th>
-                    <th className="p-2.5 text-center font-sans">Anti-Overvoting</th>
-                    <th className="p-2.5 text-center font-sans">EC8A</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap">PU Code</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap">Polling Unit Name</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap font-sans">Field Agent</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-cyan-400">BVAS</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-emerald-400 font-black">ADC</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-blue-400">APC</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-purple-400">PDP</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-rose-400">Rej</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right text-white font-bold">Total</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-right font-sans">Lead</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-center font-sans">Anti-Overvoting</th>
+                    <th className="px-3 py-2.5 whitespace-nowrap text-center font-sans">EC8A</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800 text-slate-300">
+                <tbody className="divide-y divide-slate-800 text-slate-300 text-[11px]">
                   {pollingUnits.map(p => {
                     const cast = p.adc + p.apc + p.pdp + p.rej;
                     const isOver = cast > p.bivas && p.bivas > 0;
                     return (
                       <tr key={p.code} className="hover:bg-slate-900/60 transition-colors">
-                        <td className="p-2.5 font-bold text-white">{p.code}</td>
-                        <td className="p-2.5 font-sans font-medium text-slate-200 truncate max-w-[200px]">{p.name}</td>
-                        <td className="p-2.5 font-sans text-slate-400">{p.agent}</td>
-                        <td className="p-2.5 text-right text-cyan-400">{p.bivas}</td>
-                        <td className="p-2.5 text-right font-bold text-emerald-400">{p.adc}</td>
-                        <td className="p-2.5 text-right text-blue-300">{p.apc}</td>
-                        <td className="p-2.5 text-right text-purple-300">{p.pdp}</td>
-                        <td className="p-2.5 text-right text-rose-400">{p.rej}</td>
-                        <td className="p-2.5 text-right font-bold text-white">{cast}</td>
-                        <td className="p-2.5 text-right font-sans">
+                        <td className="px-3 py-2.5 whitespace-nowrap font-bold text-white font-mono">{p.code}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap font-sans font-medium text-slate-200 truncate max-w-[200px]">{p.name}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap font-sans text-slate-400">{p.agent}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-cyan-400">{p.bivas}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right font-bold text-emerald-400">{p.adc}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-blue-300">{p.apc}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-purple-300">{p.pdp}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right text-rose-400">{p.rej}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right font-bold text-white">{cast}</td>
+                        <td className="px-3 py-2.5 whitespace-nowrap text-right font-sans">
                           <span className={p.adc >= p.apc ? 'text-emerald-400 font-bold' : 'text-blue-400'}>
                             {p.adc >= p.apc ? `+${p.adc - p.apc}` : `${p.adc - p.apc}`}
                           </span>
                         </td>
-                        <td className="p-2.5 text-center font-sans">
+                        <td className="px-3 py-2.5 whitespace-nowrap text-center font-sans">
                           {isOver ? (
-                            <span className="px-1.5 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-600 text-[9px] font-bold">
+                            <span className="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-600 text-[9px] font-bold whitespace-nowrap inline-block">
                               OVER-VOTED
                             </span>
                           ) : (
-                            <span className="px-1.5 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800 text-[9px] font-bold">
+                            <span className="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800 text-[9px] font-bold whitespace-nowrap inline-block">
                               LEGAL ✓
                             </span>
                           )}
                         </td>
-                        <td className="p-2.5 text-center font-sans">
+                        <td className="px-3 py-2.5 whitespace-nowrap text-center font-sans">
                           {p.ec8aUploaded ? (
-                            <span className="text-emerald-400 font-bold text-[10px]">✓ Signed</span>
+                            <span className="text-emerald-400 font-bold text-[10px] whitespace-nowrap">✓ Signed</span>
                           ) : (
-                            <span className="text-amber-400 text-[10px]">Pending</span>
+                            <span className="text-amber-400 text-[10px] whitespace-nowrap">Pending</span>
                           )}
                         </td>
                       </tr>
@@ -472,17 +472,17 @@ export function RASupervisorDashboard({
                 </tbody>
                 <tfoot className="bg-slate-900 border-t-2 border-slate-700 font-bold text-white text-xs">
                   <tr>
-                    <td colSpan={3} className="p-2.5 font-sans uppercase">
+                    <td colSpan={3} className="px-3 py-3 whitespace-nowrap font-sans uppercase">
                       GRAND TOTALS ({wardName})
                     </td>
-                    <td className="p-2.5 text-right text-cyan-400 font-black">{formatNumber(wardBIVAS)}</td>
-                    <td className="p-2.5 text-right text-emerald-400 font-black">{formatNumber(wardADC)}</td>
-                    <td className="p-2.5 text-right text-blue-400 font-black">{formatNumber(wardAPC)}</td>
-                    <td className="p-2.5 text-right text-purple-400 font-black">{formatNumber(wardPDP)}</td>
-                    <td className="p-2.5 text-right text-rose-400 font-black">{formatNumber(wardRej)}</td>
-                    <td className="p-2.5 text-right text-white font-black">{formatNumber(wardTotalCast)}</td>
-                    <td className="p-2.5 text-right text-emerald-400 font-black font-sans">+{formatNumber(wardADC - wardAPC)}</td>
-                    <td colSpan={2} className="p-2.5 text-center text-emerald-400 font-sans text-[10px]">
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-cyan-400 font-black">{formatNumber(wardBIVAS)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-emerald-400 font-black">{formatNumber(wardADC)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-blue-400 font-black">{formatNumber(wardAPC)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-purple-400 font-black">{formatNumber(wardPDP)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-rose-400 font-black">{formatNumber(wardRej)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-white font-black">{formatNumber(wardTotalCast)}</td>
+                    <td className="px-3 py-3 whitespace-nowrap text-right text-emerald-400 font-black font-sans">+{formatNumber(wardADC - wardAPC)}</td>
+                    <td colSpan={2} className="px-3 py-3 whitespace-nowrap text-center text-emerald-400 font-sans text-[10px]">
                       100% COLLATED
                     </td>
                   </tr>

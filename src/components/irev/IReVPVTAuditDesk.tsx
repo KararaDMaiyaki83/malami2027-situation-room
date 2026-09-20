@@ -129,31 +129,31 @@ export function IReVPVTAuditDesk() {
         </div>
 
         {/* Audit Metrics KPIs */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mt-6 pt-5 border-t border-slate-800">
-          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800">
-            <span className="text-slate-400 text-[10px] font-bold uppercase block">Total Units Audited</span>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mt-6 pt-5 border-t border-slate-800">
+          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800 flex flex-col justify-between">
+            <span className="text-slate-400 text-[10px] font-bold uppercase block whitespace-nowrap">Total Units Audited</span>
             <span className="text-xl font-black text-white font-mono mt-0.5 block">{totalAudited} PUs</span>
-            <span className="text-[10px] text-emerald-400">21 LGAs Kebbi Scope</span>
+            <span className="text-[10px] text-emerald-400 whitespace-nowrap">21 LGAs Kebbi Scope</span>
           </div>
-          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-emerald-900/40">
-            <span className="text-emerald-400 text-[10px] font-bold uppercase block">Exact Matches ✓</span>
+          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-emerald-900/40 flex flex-col justify-between">
+            <span className="text-emerald-400 text-[10px] font-bold uppercase block whitespace-nowrap">Exact Matches ✓</span>
             <span className="text-xl font-black text-emerald-400 font-mono mt-0.5 block">{matchedCount} PUs</span>
-            <span className="text-[10px] text-slate-400">{((matchedCount / totalAudited) * 100).toFixed(0)}% Integrity</span>
+            <span className="text-[10px] text-slate-400 whitespace-nowrap">{((matchedCount / totalAudited) * 100).toFixed(0)}% Integrity</span>
           </div>
-          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-rose-900/40">
-            <span className="text-rose-400 text-[10px] font-bold uppercase block">Vote Discrepancies ⚠️</span>
+          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-rose-900/40 flex flex-col justify-between">
+            <span className="text-rose-400 text-[10px] font-bold uppercase block whitespace-nowrap">Vote Discrepancies ⚠️</span>
             <span className="text-xl font-black text-rose-400 font-mono mt-0.5 block">{varianceCount} PUs</span>
-            <span className="text-[10px] text-rose-400 font-bold">Altered Figures on IReV</span>
+            <span className="text-[10px] text-rose-400 font-bold whitespace-nowrap">Altered on IReV</span>
           </div>
-          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-amber-900/40">
-            <span className="text-amber-400 text-[10px] font-bold uppercase block">Over-Voting / BVAS Delta</span>
+          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-amber-900/40 flex flex-col justify-between">
+            <span className="text-amber-400 text-[10px] font-bold uppercase block whitespace-nowrap">Over-Voting / BVAS</span>
             <span className="text-xl font-black text-amber-400 font-mono mt-0.5 block">{accreditationCount} PUs</span>
-            <span className="text-[10px] text-amber-300 font-semibold">Sec 51 Violations</span>
+            <span className="text-[10px] text-amber-300 font-semibold whitespace-nowrap">Sec 51 Violations</span>
           </div>
-          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-purple-900/40">
-            <span className="text-purple-400 text-[10px] font-bold uppercase block">Flagged for Tribunal</span>
+          <div className="bg-slate-950/80 p-3.5 rounded-2xl border border-purple-900/40 flex flex-col justify-between">
+            <span className="text-purple-400 text-[10px] font-bold uppercase block whitespace-nowrap">Flagged for Tribunal</span>
             <span className="text-xl font-black text-purple-400 font-mono mt-0.5 block">{flaggedCount} PUs</span>
-            <span className="text-[10px] text-purple-300 font-bold">Court Ready</span>
+            <span className="text-[10px] text-purple-300 font-bold whitespace-nowrap">Court Ready</span>
           </div>
         </div>
       </div>
@@ -166,37 +166,37 @@ export function IReVPVTAuditDesk() {
           <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800 flex-wrap gap-1">
             <button
               onClick={() => setStatusFilter('ALL')}
-              className={'px-3 py-1.5 rounded-lg transition ' + (statusFilter === 'ALL' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white')}
+              className={'px-3 py-1.5 rounded-lg transition whitespace-nowrap shrink-0 ' + (statusFilter === 'ALL' ? 'bg-emerald-600 text-white shadow' : 'text-slate-400 hover:text-white')}
             >
               All Records ({records.length})
             </button>
             <button
               onClick={() => setStatusFilter('VARIANCE')}
-              className={'px-3 py-1.5 rounded-lg transition ' + (statusFilter === 'VARIANCE' ? 'bg-rose-600 text-white' : 'text-slate-400 hover:text-white')}
+              className={'px-3 py-1.5 rounded-lg transition whitespace-nowrap shrink-0 ' + (statusFilter === 'VARIANCE' ? 'bg-rose-600 text-white shadow' : 'text-slate-400 hover:text-white')}
             >
               Vote Variances ({varianceCount})
             </button>
             <button
               onClick={() => setStatusFilter('ACCREDITATION')}
-              className={'px-3 py-1.5 rounded-lg transition ' + (statusFilter === 'ACCREDITATION' ? 'bg-amber-600 text-white' : 'text-slate-400 hover:text-white')}
+              className={'px-3 py-1.5 rounded-lg transition whitespace-nowrap shrink-0 ' + (statusFilter === 'ACCREDITATION' ? 'bg-amber-600 text-white shadow' : 'text-slate-400 hover:text-white')}
             >
               Over-Voting ({accreditationCount})
             </button>
             <button
               onClick={() => setStatusFilter('TIME_LAG')}
-              className={'px-3 py-1.5 rounded-lg transition ' + (statusFilter === 'TIME_LAG' ? 'bg-purple-600 text-white' : 'text-slate-400 hover:text-white')}
+              className={'px-3 py-1.5 rounded-lg transition whitespace-nowrap shrink-0 ' + (statusFilter === 'TIME_LAG' ? 'bg-purple-600 text-white shadow' : 'text-slate-400 hover:text-white')}
             >
               Time Lag ({timeLagCount})
             </button>
             <button
               onClick={() => setStatusFilter('MATCHED')}
-              className={'px-3 py-1.5 rounded-lg transition ' + (statusFilter === 'MATCHED' ? 'bg-emerald-600 text-white' : 'text-slate-400 hover:text-white')}
+              className={'px-3 py-1.5 rounded-lg transition whitespace-nowrap shrink-0 ' + (statusFilter === 'MATCHED' ? 'bg-emerald-600 text-white shadow' : 'text-slate-400 hover:text-white')}
             >
               Matched ({matchedCount})
             </button>
             <button
               onClick={() => setStatusFilter('FLAGGED')}
-              className={'px-3 py-1.5 rounded-lg transition ' + (statusFilter === 'FLAGGED' ? 'bg-amber-500 text-slate-950' : 'text-slate-400 hover:text-white')}
+              className={'px-3 py-1.5 rounded-lg transition whitespace-nowrap shrink-0 ' + (statusFilter === 'FLAGGED' ? 'bg-amber-500 text-slate-950 font-bold shadow' : 'text-slate-400 hover:text-white')}
             >
               Flagged Tribunal ({flaggedCount})
             </button>

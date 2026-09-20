@@ -166,28 +166,28 @@ export function LGASupervisorDashboard({
             </p>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap shrink-0">
             <button
               onClick={exportLgaCSV}
-              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
+              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm shrink-0 whitespace-nowrap"
               title="Export Form EC8C as CSV Spreadsheet"
             >
-              <Download className="w-4 h-4 text-emerald-400" />
+              <Download className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Export CSV</span>
             </button>
             <button
               onClick={() => setShowPrintModal(true)}
-              className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/30"
+              className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/30 shrink-0 whitespace-nowrap"
               title="Print Official Form EC8C or Save as PDF"
             >
-              <Printer className="w-4 h-4" />
+              <Printer className="w-4 h-4 shrink-0" />
               <span>Print Form EC8C (PDF)</span>
             </button>
             <button
               onClick={() => setAffidavitModal(true)}
-              className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md shadow-amber-600/20"
+              className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-md shadow-amber-600/20 shrink-0 whitespace-nowrap"
             >
-              <Scale className="w-4 h-4" />
+              <Scale className="w-4 h-4 shrink-0" />
               <span>File Section 51 Protest Affidavit</span>
             </button>
           </div>
@@ -285,31 +285,31 @@ export function LGASupervisorDashboard({
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-slate-800">
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-950 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
                 <tr>
-                  <th className="p-3">Ward Name</th>
-                  <th className="p-3">PUs Collated</th>
-                  <th className="p-3 text-emerald-400 font-mono">ADC Votes</th>
-                  <th className="p-3 text-blue-400 font-mono">APC Votes</th>
-                  <th className="p-3 text-rose-400 font-mono">Rejected</th>
-                  <th className="p-3 text-amber-400">Cancelled PUs</th>
-                  <th className="p-3">EC8B Status</th>
-                  <th className="p-3">Action</th>
+                  <th className="px-3 py-2.5 whitespace-nowrap">Ward Name</th>
+                  <th className="px-3 py-2.5 whitespace-nowrap">PUs Collated</th>
+                  <th className="px-3 py-2.5 whitespace-nowrap text-emerald-400 font-mono">ADC Votes</th>
+                  <th className="px-3 py-2.5 whitespace-nowrap text-blue-400 font-mono">APC Votes</th>
+                  <th className="px-3 py-2.5 whitespace-nowrap text-rose-400 font-mono">Rejected</th>
+                  <th className="px-3 py-2.5 whitespace-nowrap text-amber-400">Cancelled PUs</th>
+                  <th className="px-3 py-2.5 whitespace-nowrap">EC8B Status</th>
+                  <th className="px-3 py-2.5 whitespace-nowrap text-center">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800 text-slate-300">
-                {wards.map((w, idx) => (
+                {wards.map((w) => (
                   <tr key={w.name} className="hover:bg-slate-800/40 transition-colors">
-                    <td className="p-3 font-semibold text-white">{w.name}</td>
-                    <td className="p-3 font-mono">{w.collatedPUs} / {w.totalPUs}</td>
-                    <td className="p-3 font-mono font-bold text-emerald-400">{formatNumber(w.adc)}</td>
-                    <td className="p-3 font-mono font-bold text-blue-400">{formatNumber(w.apc)}</td>
-                    <td className="p-3 font-mono text-rose-400">{w.rej}</td>
-                    <td className="p-3 font-mono text-amber-400 font-bold">{w.cancelledPUs > 0 ? `${w.cancelledPUs} PUs` : 'None'}</td>
-                    <td className="p-3">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                    <td className="px-3 py-2.5 whitespace-nowrap font-semibold text-white">{w.name}</td>
+                    <td className="px-3 py-2.5 whitespace-nowrap font-mono">{w.collatedPUs} / {w.totalPUs}</td>
+                    <td className="px-3 py-2.5 whitespace-nowrap font-mono font-bold text-emerald-400">{formatNumber(w.adc)}</td>
+                    <td className="px-3 py-2.5 whitespace-nowrap font-mono font-bold text-blue-400">{formatNumber(w.apc)}</td>
+                    <td className="px-3 py-2.5 whitespace-nowrap font-mono text-rose-400">{w.rej}</td>
+                    <td className="px-3 py-2.5 whitespace-nowrap font-mono text-amber-400 font-bold">{w.cancelledPUs > 0 ? `${w.cancelledPUs} PUs` : 'None'}</td>
+                    <td className="px-3 py-2.5 whitespace-nowrap">
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold whitespace-nowrap ${
                         w.ec8bStatus === 'CERTIFIED'
                           ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
                           : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
@@ -317,13 +317,13 @@ export function LGASupervisorDashboard({
                         {w.ec8bStatus}
                       </span>
                     </td>
-                    <td className="p-3">
+                    <td className="px-3 py-2.5 whitespace-nowrap text-center">
                       <button
                         onClick={() => {
                           setTargetWard(w.name);
                           setAffidavitModal(true);
                         }}
-                        className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-semibold"
+                        className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-semibold transition border border-slate-700/60 whitespace-nowrap"
                       >
                         Inspect / Protest
                       </button>

@@ -243,32 +243,32 @@ export function FinancialImplicationsDesk() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5 flex-wrap">
+          <div className="flex items-center gap-2.5 flex-wrap shrink-0">
             <button
               onClick={() => window.open('/kebbi_2027_financial_implications_budget.html', '_blank')}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-600/30 transition"
+              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-emerald-600/30 transition shrink-0 whitespace-nowrap"
               title="Open print-optimized master budget sheet or print to PDF"
             >
-              <Printer className="w-4 h-4" />
+              <Printer className="w-4 h-4 shrink-0" />
               <span>Print Official Budget (PDF)</span>
             </button>
 
             <button
               onClick={exportCSV}
-              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs flex items-center gap-1.5 transition"
+              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold text-xs flex items-center gap-1.5 transition shrink-0 whitespace-nowrap"
               title="Export complete budget breakdown as CSV"
             >
-              <Download className="w-4 h-4 text-emerald-400" />
+              <Download className="w-4 h-4 text-emerald-400 shrink-0" />
               <span>Export CSV</span>
             </button>
 
             <a
               href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
               download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
-              className="px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold text-xs flex items-center gap-1.5 transition"
+              className="px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold text-xs flex items-center gap-1.5 transition shrink-0 whitespace-nowrap"
               title="Download editable PowerPoint (.pptx) file"
             >
-              <Download className="w-4 h-4 text-amber-400" />
+              <Download className="w-4 h-4 text-amber-400 shrink-0" />
               <span>Download Slides (.pptx)</span>
             </a>
           </div>
@@ -402,25 +402,25 @@ export function FinancialImplicationsDesk() {
                   </div>
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-slate-800">
                   <table className="w-full text-left text-xs border border-slate-800 rounded-xl overflow-hidden">
-                    <thead className="bg-slate-950/80 text-slate-400 font-bold border-b border-slate-800">
+                    <thead className="bg-slate-950/80 text-slate-400 font-bold border-b border-slate-800 uppercase text-[10px] tracking-wider">
                       <tr>
-                        <th className="p-2.5">Item Description</th>
-                        <th className="p-2.5 text-center">Qty</th>
-                        <th className="p-2.5 text-right">Unit Rate (₦)</th>
-                        <th className="p-2.5 text-right">Subtotal (₦)</th>
-                        <th className="p-2.5">Operational Note</th>
+                        <th className="px-3 py-2.5 whitespace-nowrap">Item Description</th>
+                        <th className="px-3 py-2.5 text-center whitespace-nowrap">Qty</th>
+                        <th className="px-3 py-2.5 text-right whitespace-nowrap min-w-[120px]">Unit Rate (₦)</th>
+                        <th className="px-3 py-2.5 text-right whitespace-nowrap min-w-[130px] text-emerald-400">Subtotal (₦)</th>
+                        <th className="px-3 py-2.5 whitespace-nowrap font-sans">Operational Note</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-800/60 text-slate-300 font-mono text-[11px]">
                       {cc.items.map((item, idx) => (
                         <tr key={idx} className="hover:bg-slate-800/30 transition">
-                          <td className="p-2.5 font-sans font-medium text-slate-200">{item.name}</td>
-                          <td className="p-2.5 text-center text-slate-400">{item.qty}</td>
-                          <td className="p-2.5 text-right">{formatNumber(item.unit)}</td>
-                          <td className="p-2.5 text-right font-bold text-emerald-400">{formatNumber(item.total)}</td>
-                          <td className="p-2.5 font-sans text-slate-400 text-[10px]">{item.note}</td>
+                          <td className="px-3 py-2.5 font-sans font-medium text-slate-200 whitespace-nowrap sm:whitespace-normal">{item.name}</td>
+                          <td className="px-3 py-2.5 text-center text-slate-400 whitespace-nowrap">{item.qty}</td>
+                          <td className="px-3 py-2.5 text-right whitespace-nowrap">{formatNumber(item.unit)}</td>
+                          <td className="px-3 py-2.5 text-right font-bold text-emerald-400 whitespace-nowrap">{formatNumber(item.total)}</td>
+                          <td className="px-3 py-2.5 font-sans text-slate-400 text-[10px] min-w-[200px]">{item.note}</td>
                         </tr>
                       ))}
                     </tbody>

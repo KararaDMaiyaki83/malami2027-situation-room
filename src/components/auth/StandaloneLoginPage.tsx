@@ -203,10 +203,10 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center space-x-2.5">
+        <div className="flex items-center space-x-2.5 shrink-0">
           {/* Tech Partners Accreditation Badge */}
           <div 
-            className="hidden lg:flex items-center space-x-1.5 text-[11px] text-slate-400 bg-slate-900/90 px-2.5 py-1 rounded-xl border border-slate-800 shadow-sm cursor-help"
+            className="hidden lg:flex items-center space-x-1.5 text-[11px] text-slate-400 bg-slate-900/90 px-2.5 py-1 rounded-xl border border-slate-800 shadow-sm cursor-help shrink-0 whitespace-nowrap"
             title="GetoCore Digital Innovation × TEEM TECH Solution | Lead IT Officer: Fatima Sulaiman Umar (08035533332 / 09035328748)"
           >
             <span>Powered by</span>
@@ -218,17 +218,17 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
           <button
             type="button"
             onClick={() => setShowInstallModal(true)}
-            className="flex items-center space-x-2 text-xs font-bold text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 px-3 py-1.5 rounded-xl transition shadow-sm"
+            className="flex items-center space-x-2 text-xs font-bold text-amber-300 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 px-3 py-1.5 rounded-xl transition shadow-sm shrink-0 whitespace-nowrap"
             title="Download & Install App on Android, iPhone or PC"
           >
-            <img src="/malami_logo.png" alt="App Logo" className="w-4 h-4 rounded-full object-cover border border-amber-400" />
-            <Download className="w-3.5 h-3.5 text-amber-400" />
+            <img src="/malami_logo.png" alt="App Logo" className="w-4 h-4 rounded-full object-cover border border-amber-400 shrink-0" />
+            <Download className="w-3.5 h-3.5 text-amber-400 shrink-0" />
             <span className="hidden sm:inline">Download App</span>
             <span className="sm:hidden">Install</span>
           </button>
 
-          <div className="flex items-center space-x-2 text-xs font-semibold text-emerald-400 bg-emerald-950/60 px-3 py-1.5 rounded-xl border border-emerald-800/60 shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <div className="flex items-center space-x-2 text-xs font-semibold text-emerald-400 bg-emerald-950/60 px-3 py-1.5 rounded-xl border border-emerald-800/60 shadow-sm shrink-0 whitespace-nowrap">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
             <span className="hidden md:inline">Cryptographic Defense Gate • Tier 4 Active</span>
             <span className="md:hidden">Secured Gate</span>
           </div>

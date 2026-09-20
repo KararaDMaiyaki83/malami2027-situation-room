@@ -26,62 +26,67 @@ export function MalamiExecutivePitchDeck({ onOpenBudget }: { onOpenBudget?: () =
       
       {/* Slide Control Header with PPTX & PDF Print buttons */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 shadow-xl">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400">
+        <div className="flex items-center gap-3 shrink-0">
+          <div className="p-2 rounded-xl bg-amber-500/20 text-amber-400 shrink-0">
             <Presentation className="w-5 h-5" />
           </div>
           <div>
-            <div className="font-bold text-white text-sm">Executive Presentation Mode &bull; Abubakar Malami, SAN</div>
+            <div className="font-bold text-white text-sm whitespace-nowrap">Executive Presentation Mode &bull; Abubakar Malami, SAN</div>
             <div className="text-xs text-slate-400 font-mono">Slide {slide} of {totalSlides}</div>
           </div>
         </div>
 
-        {/* Quick-action buttons */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <a
-            href="/kebbi_2027_malami_presentation_deck.html"
-            target="_blank"
-            className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow"
-            title="Open printable presentation deck with 1-click PDF print"
-          >
-            <Printer className="w-3.5 h-3.5" />
-            <span>Print Slides (PDF)</span>
-          </a>
+        {/* Quick-action buttons & Slide Navigation */}
+        <div className="flex items-center gap-2.5 flex-wrap shrink-0">
+          <div className="flex items-center gap-2 shrink-0">
+            <a
+              href="/kebbi_2027_malami_presentation_deck.html"
+              target="_blank"
+              className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow whitespace-nowrap"
+              title="Open printable presentation deck with 1-click PDF print"
+            >
+              <Printer className="w-3.5 h-3.5 shrink-0" />
+              <span>Print Slides (PDF)</span>
+            </a>
 
-          <a
-            href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
-            download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
-            className="px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 text-xs font-bold flex items-center gap-1.5 transition"
-            title="Download editable Microsoft PowerPoint (.pptx) file"
-          >
-            <Download className="w-3.5 h-3.5 text-amber-400" />
-            <span>Download (.pptx)</span>
-          </a>
+            <a
+              href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
+              download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
+              className="px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 text-xs font-bold flex items-center gap-1.5 transition whitespace-nowrap"
+              title="Download editable Microsoft PowerPoint (.pptx) file"
+            >
+              <Download className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>Download (.pptx)</span>
+            </a>
 
-          <a
-            href="/kebbi_2027_financial_implications_budget.html"
-            target="_blank"
-            className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition"
-            title="View complete itemized budget proposal"
-          >
-            <FileText className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Master Budget (₦329M)</span>
-          </a>
+            <a
+              href="/kebbi_2027_financial_implications_budget.html"
+              target="_blank"
+              className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold flex items-center gap-1.5 transition whitespace-nowrap"
+              title="View complete itemized budget proposal"
+            >
+              <FileText className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>Master Budget (₦329M)</span>
+            </a>
+          </div>
 
-          {/* Slide Navigation */}
-          <div className="flex items-center gap-1.5 ml-2 border-l border-slate-800 pl-3">
+          {/* Clean Self-Contained Slide Navigation Capsule */}
+          <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800 shrink-0">
             <button 
               onClick={() => setSlide(s => Math.max(1, s - 1))}
               disabled={slide === 1}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-white transition"
+              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-30 text-white transition shrink-0"
               title="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
+            <span className="text-xs font-mono font-bold text-amber-300 px-2 min-w-[50px] text-center shrink-0">
+              {slide} / {totalSlides}
+            </span>
             <button 
               onClick={() => setSlide(s => Math.min(totalSlides, s + 1))}
               disabled={slide === totalSlides}
-              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-40 text-white transition"
+              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:opacity-30 text-white transition shrink-0"
               title="Next slide"
             >
               <ChevronRight className="w-4 h-4" />

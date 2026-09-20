@@ -59,21 +59,21 @@ export function StrategicInnovationsDesk() {
             </div>
             
             {/* Tech Partner Accreditation & Print Button */}
-            <div className="flex items-center gap-2.5 flex-wrap">
+            <div className="flex items-center gap-2.5 flex-wrap shrink-0">
               <a
                 href="/kebbi_2027_technical_team_defense_brief.html"
                 target="_blank"
-                className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition transform hover:scale-105"
+                className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition transform hover:scale-105 shrink-0 whitespace-nowrap"
                 title="Open or print the official Technical Evaluation & Competitive Defense brief prepared for Malami's Technical Committee"
               >
-                <FileText className="w-3.5 h-3.5" />
+                <FileText className="w-3.5 h-3.5 shrink-0" />
                 <span>Print Committee Brief (PDF)</span>
               </a>
 
-              <div className="flex items-center gap-2 text-xs bg-slate-950/80 px-3 py-1.5 rounded-xl border border-slate-800">
+              <div className="flex items-center gap-2 text-xs bg-slate-950/80 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0 whitespace-nowrap">
                 <span className="text-slate-400">Powered by</span>
                 <strong className="text-emerald-400">GetoCore</strong>
-                <span className="text-slate-600">×</span>
+                <span className="text-slate-600 font-bold">×</span>
                 <strong className="text-amber-300">TEEM TECH</strong>
                 <span className="text-slate-500 hidden sm:inline">| IT: Fatima Sulaiman Umar</span>
               </div>
