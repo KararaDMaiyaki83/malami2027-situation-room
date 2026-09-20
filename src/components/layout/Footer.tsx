@@ -7,11 +7,14 @@ export function Footer() {
         
         {/* Campaign & Directorate Title */}
         <div>
-          <p className="font-semibold text-slate-300 text-sm">
-            African Democratic Congress (ADC) — Directorate of Electoral Strategy, Information Technology & Legal Shield
+          <p className="font-bold text-white text-base tracking-tight">
+            Abubakar Malami (SAN) Election 2027 Situation Room
+          </p>
+          <p className="text-xs text-emerald-400 font-semibold mt-0.5">
+            Official Situation Room Platform by the Technical Team &bull; Kebbi State Central Collation Command
           </p>
           <p className="text-[11px] text-slate-400 mt-0.5">
-            Kebbi State 2027 Gubernatorial Central Command • Standard Operating Platform for Abubakar Malami, SAN, CON
+            African Democratic Congress (ADC) 🤝 Directorate of Electoral Strategy, ICT &amp; Legal Defense
           </p>
         </div>
 
@@ -22,11 +25,14 @@ export function Footer() {
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span>GetoCore Digital Innovation</span>
           </div>
-          <span className="text-slate-500 text-xs font-semibold">in partnership with</span>
+          <span className="text-slate-500 text-xs font-semibold">&amp;</span>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-950/70 border border-amber-500/50 text-amber-300 font-bold shadow-sm">
             <span>🤝</span>
             <span>TEEM TECH Solution</span>
           </div>
+          <span className="text-[11px] text-amber-300 font-semibold bg-slate-900 px-2.5 py-1 rounded-lg border border-slate-800">
+            Kaduna&apos;s #1 IT Companies with Election Ideas
+          </span>
         </div>
 
         {/* Technical Leadership & Direct Support Desk */}

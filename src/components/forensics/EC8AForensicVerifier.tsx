@@ -65,8 +65,9 @@ export function EC8AForensicVerifier() {
           {/* Form Representation */}
           <div className="bg-amber-50/5 border-2 border-dashed border-slate-700 rounded-xl p-4 font-mono text-xs text-slate-300 space-y-3">
             <div className="text-center border-b border-slate-700 pb-2">
-              <div className="font-black text-white text-sm">INDEPENDENT NATIONAL ELECTORAL COMMISSION</div>
-              <div className="text-[11px] text-amber-300">FORM EC8A — STATEMENT OF RESULT OF POLL FROM POLLING UNIT</div>
+              <div className="font-black text-white text-sm">ABUBAKAR MALAMI (SAN) 2027 SITUATION ROOM</div>
+              <div className="text-[11px] text-amber-300">FORM EC8A — STATUTORY STATEMENT OF RESULT AUDIT</div>
+              <div className="text-[10px] text-emerald-400 font-bold">OFFICIAL PLATFORM BY THE TECHNICAL TEAM</div>
               <div className="text-[10px] text-slate-400">STATE: KEBBI | LGA: BIRNIN KEBBI | WARD: DANGALADIMA</div>
             </div>
 

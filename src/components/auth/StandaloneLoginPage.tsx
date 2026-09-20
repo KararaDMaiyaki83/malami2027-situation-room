@@ -191,14 +191,14 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
           <div>
             <div className="flex items-center space-x-2">
               <span className="font-black text-sm sm:text-base tracking-tight text-white">
-                ABUBAKAR MALAMI, SAN, CON
+                ABUBAKAR MALAMI (SAN) SITUATION ROOM
               </span>
               <span className="rounded bg-emerald-500/20 px-2 py-0.5 text-[9px] font-black text-emerald-400 border border-emerald-500/40">
                 ADC 🤝 KEBBI 2027
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 leading-none mt-0.5">
-              Kebbi State Gubernatorial Election Monitoring & Collation Command
+            <p className="text-[11px] text-emerald-400 font-semibold leading-none mt-0.5">
+              Official Situation Room Platform by the Technical Team
             </p>
           </div>
         </div>
@@ -206,13 +206,14 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
         <div className="flex items-center space-x-2.5 shrink-0">
           {/* Tech Partners Accreditation Badge */}
           <div 
-            className="hidden lg:flex items-center space-x-1.5 text-[11px] text-slate-400 bg-slate-900/90 px-2.5 py-1 rounded-xl border border-slate-800 shadow-sm cursor-help shrink-0 whitespace-nowrap"
-            title="GetoCore Digital Innovation × TEEM TECH Solution | Lead IT Officer: Fatima Sulaiman Umar (08035533332 / 09035328748)"
+            className="hidden lg:flex items-center space-x-1.5 text-[11px] text-slate-300 bg-slate-900/90 px-3 py-1.5 rounded-xl border border-slate-800 shadow-sm cursor-help shrink-0 whitespace-nowrap"
+            title="Official Platform by the Technical Team | Powered by GetoCore Digital Innovation & TEEM TECH Solution (Kaduna's #1 IT Companies with Election Ideas) | Lead IT Officer: Fatima Sulaiman Umar (08035533332 / 09035328748)"
           >
-            <span>Powered by</span>
+            <span className="text-slate-400">Powered by</span>
             <span className="font-bold text-emerald-400">GetoCore</span>
-            <span className="text-slate-500 font-bold">×</span>
+            <span className="text-slate-500 font-bold">&amp;</span>
             <span className="font-bold text-amber-300">TEEM TECH</span>
+            <span className="text-[10px] text-amber-300 font-bold bg-slate-950 px-1.5 py-0.5 rounded border border-slate-800">(Kaduna #1 IT)</span>
           </div>
 
           <button
@@ -512,17 +513,23 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-slate-900 bg-slate-950/80 py-5 px-4 text-center text-xs text-slate-400 space-y-2">
-        <p className="text-slate-300 font-semibold">
-          African Democratic Congress (ADC) • Directorate of Electoral Strategy, ICT & Legal Shield • Kebbi 2027
+        <p className="text-white font-bold text-sm">
+          Abubakar Malami (SAN) Election 2027 Situation Room
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-2 text-xs">
+        <p className="text-emerald-400 text-xs font-semibold">
+          Official Situation Room Platform by the Technical Team &bull; Kebbi State Collation Command
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-2 text-xs pt-1">
           <span className="text-slate-400">Powered by</span>
           <span className="font-bold text-emerald-400 bg-emerald-950/70 px-2.5 py-0.5 rounded-lg border border-emerald-800/60 shadow-sm">
             GetoCore Digital Innovation
           </span>
-          <span className="text-slate-500 font-semibold">in partnership with</span>
+          <span className="text-slate-500 font-semibold">&amp;</span>
           <span className="font-bold text-amber-300 bg-amber-950/70 px-2.5 py-0.5 rounded-lg border border-amber-800/60 shadow-sm">
             TEEM TECH Solution
+          </span>
+          <span className="text-[11px] text-amber-300 font-semibold bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+            Kaduna&apos;s #1 IT Companies with Election Ideas
           </span>
         </div>
         

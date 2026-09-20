@@ -357,9 +357,9 @@ export function MalamiExecutivePitchDeck({ onOpenBudget }: { onOpenBudget?: () =
 
         {/* Slide Footer */}
         <div className="flex flex-wrap justify-between items-center gap-2 pt-4 border-t border-slate-800 text-xs text-slate-500">
-          <span>Prepared for Abubakar Malami, SAN, CON • ADC Kebbi 2027</span>
+          <span>Abubakar Malami (SAN) Election 2027 Situation Room • Official Platform by the Technical Team</span>
           <span className="text-[11px] text-slate-400">
-            Powered by <strong className="text-emerald-400">GetoCore Digital Innovation</strong> × <strong className="text-amber-300">TEEM TECH Solution</strong> | IT: Fatima Sulaiman Umar (08035533332 / 09035328748)
+            Powered by <strong className="text-emerald-400">GetoCore Digital Innovation</strong> &amp; <strong className="text-amber-300">TEEM TECH Solution</strong> (Kaduna&apos;s #1 IT Companies with Election Ideas) | IT: Fatima Sulaiman Umar (08035533332 / 09035328748)
           </span>
         </div>
 

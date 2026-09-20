@@ -152,10 +152,10 @@ export function Navbar({
                 <span>MALAMI 2027</span>
                 <span className="text-amber-300">&bull; ADC 🤝</span>
               </span>
-              <span className="text-xs text-slate-400 hidden md:inline">Kebbi Central Command</span>
+              <span className="text-xs text-slate-400 hidden md:inline">Situation Room • Official Command</span>
             </div>
             <h1 className="text-xs sm:text-sm md:text-base font-bold text-white tracking-tight flex items-center gap-1.5 truncate">
-              Abubakar Malami, SAN, CON
+              Abubakar Malami (SAN) Situation Room
             </h1>
           </div>
         </div>
@@ -166,13 +166,15 @@ export function Navbar({
           {/* Tech Partners Accreditation Badge */}
           <div 
             className="hidden xl:flex items-center space-x-1.5 text-[10px] text-slate-400 bg-slate-950/90 px-2.5 py-1.5 rounded-xl border border-slate-800 shadow-sm shrink-0 cursor-help" 
-            title="GetoCore Digital Innovation × TEEM TECH Solution | IT Technical Officer: Fatima Sulaiman Umar (08035533332 / 09035328748)"
+            title="Official Platform by the Technical Team | Powered by GetoCore Digital Innovation & TEEM TECH Solution (Kaduna's #1 IT Companies with Election Ideas) | IT Technical Officer: Fatima Sulaiman Umar (08035533332 / 09035328748)"
           >
+            <span className="text-emerald-400 font-semibold">Official Platform</span>
+            <span className="text-slate-600 font-bold">&bull;</span>
             <span className="text-slate-500">Powered by</span>
             <span className="font-bold text-emerald-400">GetoCore</span>
             <span className="text-slate-600 font-bold">×</span>
             <span className="font-bold text-amber-300">TEEM TECH</span>
-            <span className="text-[9px] text-slate-500 hidden 2xl:inline">| IT: Fatima Sulaiman Umar</span>
+            <span className="text-[9px] text-slate-500 hidden 2xl:inline">(Kaduna #1 IT)</span>
           </div>
 
           {/* Download App Button with SAN Malami Logo */}

@@ -198,7 +198,7 @@ export function PollingUnitAgentPWA({ currentUser, onResultSubmitted }: PollingU
     ctx.font = `bold ${fontSize}px monospace`;
     
     const nowStr = new Date().toLocaleString() + ' WAT';
-    const line1 = `ADC MONITOR 2027 • INEC FORM EC8A EVIDENCE • ${puCode}`;
+    const line1 = `MALAMI 2027 SITUATION ROOM • FORM EC8A FIELD VERIFIER • ${puCode}`;
     const line2 = `GPS: 12.4539° N, 4.1975° E (±2m) | TIME: ${nowStr}`;
     const line3 = `BVAS: KB-BVAS-BK-008 | AGENT: ${agentName} (${badgeNumber}) | HASH: #EC8A-${Date.now().toString(16).toUpperCase()}`;
 
@@ -241,7 +241,7 @@ export function PollingUnitAgentPWA({ currentUser, onResultSubmitted }: PollingU
           ctx.fillStyle = '#ffffff';
           ctx.font = `bold ${fontSize}px monospace`;
           const nowStr = new Date().toLocaleString() + ' WAT';
-          ctx.fillText(`ADC EVIDENCE • INEC FORM EC8A • ${puCode}`, 20, bannerY + fontSize + 10);
+          ctx.fillText(`MALAMI 2027 SITUATION ROOM • FORM EC8A FIELD VERIFIER • ${puCode}`, 20, bannerY + fontSize + 10);
           ctx.fillStyle = '#34d399';
           ctx.fillText(`GPS: 12.4539° N, 4.1975° E (±2m) | ${nowStr}`, 20, bannerY + (fontSize * 2) + 16);
           ctx.fillStyle = '#fde68a';
@@ -336,8 +336,8 @@ export function PollingUnitAgentPWA({ currentUser, onResultSubmitted }: PollingU
 
   const handleDownloadProtestAffidavit = () => {
     const text = `
-FORM EC8A STATUTORY PROTEST AFFIDAVIT
-INEC KEBBI STATE GUBERNATORIAL ELECTION 2027
+ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM
+FORM EC8A STATUTORY PROTEST AFFIDAVIT • KEBBI GUBERNATORIAL ELECTION
 IN ACCORDANCE WITH SECTION 51(2) & 51(3) OF ELECTORAL ACT 2022
 
 POLLING UNIT: ${puName} (${puCode})
@@ -958,7 +958,7 @@ COPIES SERVED TO:
                                   />
                                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent flex flex-col justify-end p-2.5 text-[9px] font-mono text-emerald-300">
                                     <div className="flex items-center justify-between text-white font-bold">
-                                      <span>INEC FORM EC8A EVIDENCE</span>
+                                      <span>MALAMI 2027 SITUATION ROOM • FORM EC8A EVIDENCE</span>
                                       <span className="text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded">✓ VERIFIED</span>
                                     </div>
                                     <span className="text-slate-200">GPS: 12.4539° N, 4.1975° E &bull; Accuracy: ±2m</span>
@@ -972,7 +972,7 @@ COPIES SERVED TO:
                                   </div>
                                   <div>
                                     <span className="text-xs font-bold text-white block">Tap to Open Live Camera</span>
-                                    <span className="text-[10px] text-slate-400">Position signed INEC Form EC8A sheet inside frame</span>
+                                    <span className="text-[10px] text-slate-400">Position signed Form EC8A sheet inside frame</span>
                                   </div>
                                 </div>
                               )}
@@ -1132,7 +1132,7 @@ COPIES SERVED TO:
               <div className="w-3 h-3 rounded-full bg-rose-500 animate-ping" />
               <div>
                 <div className="text-xs font-black tracking-wider uppercase flex items-center gap-1.5">
-                  <span>LIVE CAM &bull; INEC FORM EC8A SCANNER</span>
+                  <span>LIVE CAM &bull; MALAMI 2027 FORM EC8A SCANNER</span>
                   <span className="text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded border border-emerald-500/40">
                     HD ACTIVE
                   </span>

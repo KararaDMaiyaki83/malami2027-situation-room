@@ -92,12 +92,15 @@ export function RASupervisorDashboard({
 
   const exportWardCSV = () => {
     const lines = [
-      'INEC FORM EC8B WARD RESULTS COLLATION SCHEDULE (2027)',
-      'STATE: KEBBI | LOCAL GOVERNMENT: ' + lgaName + ' | WARD (RA): ' + wardName,
-      'SUPERVISOR: ' + (currentUser?.name || 'Usman Dangaladima') + ' (' + (currentUser?.badgeNumber || 'ADC-WSP-BK04') + ')',
-      'POWERED BY: GetoCore Digital Innovation in partnership with TEEM TECH Solution',
-      'GENERATED ON: ' + new Date().toLocaleString(),
-      'CONSTITUENCY: KEBBI GUBERNATORIAL ELECTION',
+      '# ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM',
+      '# FORM EC8B WARD RESULTS COLLATION & AUDIT SCHEDULE (2027)',
+      '# TECHNICAL STATUS: Official Situation Room Platform by the Technical Team',
+      '# STATE: KEBBI | LOCAL GOVERNMENT: ' + lgaName + ' | WARD (RA): ' + wardName,
+      '# SUPERVISOR: ' + (currentUser?.name || 'Usman Dangaladima') + ' (' + (currentUser?.badgeNumber || 'ADC-WSP-BK04') + ')',
+      '# POWERED BY: GetoCore Digital Innovation & TEEM TECH Solution — Kaduna\'s #1 IT Companies with Election Ideas',
+      '# IT TECHNICAL OFFICER: Fatima Sulaiman Umar (08035533332 / 09035328748)',
+      '# GENERATED ON: ' + new Date().toLocaleString(),
+      '# CONSTITUENCY: KEBBI GUBERNATORIAL ELECTION',
       '',
       'PU Code,Polling Unit Name,Accredited Agent,BVAS Accredited,ADC (Malami),APC (Nasir Idris),PDP,Rejected Ballots,Total Votes Cast,Lead Margin (ADC-APC),Over-Voting Audit,Form EC8A Status'
     ];
@@ -571,15 +574,18 @@ export function RASupervisorDashboard({
               </div>
             </div>
 
-            {/* Official INEC Header */}
+            {/* Official Situation Room Header */}
             <div className="text-center space-y-1 border-b-2 border-emerald-800 pb-4">
-              <div className="text-xs font-bold tracking-widest text-emerald-800 uppercase">
-                INDEPENDENT NATIONAL ELECTORAL COMMISSION
+              <div className="text-xs font-black tracking-widest text-emerald-800 uppercase">
+                ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM
               </div>
               <h2 className="text-xl sm:text-2xl font-black text-slate-950 uppercase tracking-tight">
-                FORM EC8B: REGISTRATION AREA / WARD RESULTS COLLATION SUMMARY
+                FORM EC8B: REGISTRATION AREA / WARD RESULTS COLLATION &amp; AUDIT SUMMARY
               </h2>
-              <div className="text-xs font-semibold text-slate-700">
+              <div className="text-xs font-bold text-emerald-900">
+                OFFICIAL PLATFORM BY THE TECHNICAL TEAM &bull; WARD (RA) COLLATION &amp; AUDIT DESK
+              </div>
+              <div className="text-[11px] font-semibold text-slate-700">
                 ELECTION TO THE OFFICE OF THE GOVERNOR OF KEBBI STATE &bull; 2027
               </div>
               <div className="flex justify-center gap-6 text-xs font-mono pt-1 text-slate-800 font-bold">
@@ -659,9 +665,9 @@ export function RASupervisorDashboard({
               </div>
 
               {/* Technical Partnership Footnote */}
-              <div className="pt-2 border-t border-slate-200 flex flex-wrap justify-between items-center text-[9px] text-slate-500 font-mono">
-                <span>INEC FORM EC8B OFFICIAL WARD TABULATION SHEET</span>
-                <span>Powered by <strong>GetoCore Digital Innovation</strong> in partnership with <strong>TEEM TECH Solution</strong></span>
+              <div className="pt-2 border-t border-slate-200 flex flex-wrap justify-between items-center text-[9px] text-slate-600 font-mono">
+                <span>ABUBAKAR MALAMI (SAN) 2027 SITUATION ROOM &bull; OFFICIAL FORM EC8B WARD TABULATION</span>
+                <span>Official Platform by the Technical Team &bull; Powered by <strong>GetoCore Digital Innovation &amp; TEEM TECH Solution</strong> (Kaduna&apos;s #1 IT Companies with Election Ideas) &bull; Lead IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</span>
               </div>
             </div>
 

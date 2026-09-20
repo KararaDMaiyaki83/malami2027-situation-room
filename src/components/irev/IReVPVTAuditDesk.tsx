@@ -68,12 +68,16 @@ export function IReVPVTAuditDesk() {
 
   const exportTribunalDossier = () => {
     const lines = [
-      '\uFEFFABUBAKAR MALAMI SAN ELECTION PETITION TRIBUNAL EVIDENCE DOSSIER (2027)',
-      'PARALLEL VOTER TABULATION (PVT) VS INEC IREV DUAL FORENSIC AUDIT',
-      'CANDIDATE: ABUBAKAR MALAMI, SAN, CON (AFRICAN DEMOCRATIC CONGRESS - ADC)',
-      'CONSTITUENCY: KEBBI STATE GUBERNATORIAL ELECTION',
-      `GENERATED ON: ${new Date().toLocaleString()}`,
-      'DIRECTORATE: ADC LEGAL SHIELD & ICT FORENSIC CELL',
+      '\uFEFF# ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM',
+      '# ELECTION PETITION TRIBUNAL EVIDENCE DOSSIER (2027)',
+      '# TECHNICAL STATUS: Official Situation Room Platform by the Technical Team',
+      '# PARALLEL VOTER TABULATION (PVT) VS INEC IREV DUAL FORENSIC AUDIT',
+      '# CANDIDATE: ABUBAKAR MALAMI, SAN, CON (AFRICAN DEMOCRATIC CONGRESS - ADC)',
+      '# CONSTITUENCY: KEBBI STATE GUBERNATORIAL ELECTION',
+      '# POWERED BY: GetoCore Digital Innovation & TEEM TECH Solution — Kaduna\'s #1 IT Companies with Election Ideas',
+      '# IT TECHNICAL OFFICER: Fatima Sulaiman Umar (08035533332 / 09035328748)',
+      `# GENERATED ON: ${new Date().toLocaleString()}`,
+      '# DIRECTORATE: ADC LEGAL SHIELD & ICT FORENSIC CELL',
       '',
       'PU Code,Polling Unit Name,Ward,LGA,Audit Status,Agent ADC,IReV ADC,ADC Variance,Agent APC,IReV APC,APC Variance,Agent BVAS,IReV Total Cast,Agent Time,IReV Time,Time Lag (Mins),Agent GPS,IReV GPS,Distance Delta (Meters),Flagged For Tribunal,Forensic Legal Notes'
     ];

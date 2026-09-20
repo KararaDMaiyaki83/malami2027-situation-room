@@ -193,9 +193,11 @@ export function FinancialImplicationsDesk() {
 
   const exportCSV = () => {
     const rows: string[] = [
-      '# KEBBI 2027 GUBERNATORIAL ELECTION - MASTER FINANCIAL IMPLICATIONS & BUDGET',
+      '# ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM',
+      '# MASTER FINANCIAL IMPLICATIONS & BUDGET (2027)',
+      '# TECHNICAL STATUS: Official Situation Room Platform by the Technical Team',
       '# PRINCIPAL: ABUBAKAR MALAMI, SAN, CON (AFRICAN DEMOCRATIC CONGRESS - ADC)',
-      '# POWERED BY: GetoCore Digital Innovation in partnership with TEEM TECH Solution',
+      '# POWERED BY: GetoCore Digital Innovation & TEEM TECH Solution — Kaduna\'s #1 IT Companies with Election Ideas',
       '# IT TECHNICAL OFFICER: Fatima Sulaiman Umar (Hotlines: 08035533332 / 09035328748)',
       '# DATE: ' + new Date().toISOString(),
       '',
@@ -436,8 +438,8 @@ export function FinancialImplicationsDesk() {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-800 gap-3">
           <div>
-            <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider">OFFICIAL SYSTEM ARCHITECTS</span>
-            <h4 className="text-base font-bold text-white">GetoCore Digital Innovation × TEEM TECH Solution</h4>
+            <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-wider">OFFICIAL SYSTEM ARCHITECTS (KADUNA&apos;S #1 IT COMPANIES)</span>
+            <h4 className="text-base font-bold text-white">GetoCore Digital Innovation &amp; TEEM TECH Solution</h4>
           </div>
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold">

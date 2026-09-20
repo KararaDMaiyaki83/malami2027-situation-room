@@ -285,9 +285,12 @@ export function StatewideSituationRoom({
     ].join(',');
 
     const metadataComments = [
-      '# KEBBI 2027 GUBERNATORIAL ELECTION - MASTER FORM EC8D STATEWIDE COLLATION',
+      '# ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM',
+      '# MASTER FORM EC8D STATEWIDE COLLATION & AUDIT SCHEDULE (2027)',
+      '# TECHNICAL STATUS: Official Situation Room Platform by the Technical Team',
       '# PRINCIPAL: ABUBAKAR MALAMI, SAN, CON (AFRICAN DEMOCRATIC CONGRESS - ADC)',
-      '# POWERED BY: GetoCore Digital Innovation in partnership with TEEM TECH Solution',
+      '# POWERED BY: GetoCore Digital Innovation & TEEM TECH Solution — Kaduna\'s #1 IT Companies with Election Ideas',
+      '# IT TECHNICAL OFFICER: Fatima Sulaiman Umar (08035533332 / 09035328748)',
       '# DATE: ' + new Date().toISOString(),
       ''
     ].join('\n');
@@ -353,11 +356,13 @@ export function StatewideSituationRoom({
     ].join(',');
 
     const metadata = [
-      '# INEC FORM EC8C LGA RESULTS COLLATION SCHEDULE (2027)',
+      '# ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM',
+      '# FORM EC8C LGA RESULTS COLLATION & AUDIT SCHEDULE (2027)',
+      '# TECHNICAL STATUS: Official Situation Room Platform by the Technical Team',
       '# STATE: KEBBI | LOCAL GOVERNMENT AREA: ' + targetLgaName.toUpperCase(),
       '# CONSTITUENCY: KEBBI STATE GUBERNATORIAL ELECTION',
       '# SUPERVISION: Statewide Situation Room Command (SAN Abubakar Malami Campaign)',
-      '# POWERED BY: GetoCore Digital Innovation in partnership with TEEM TECH Solution',
+      '# POWERED BY: GetoCore Digital Innovation & TEEM TECH Solution — Kaduna\'s #1 IT Companies with Election Ideas',
       '# IT TECHNICAL OFFICER: Fatima Sulaiman Umar (08035533332 / 09035328748)',
       '# DATE & TIME: ' + new Date().toLocaleString() + ' WAT',
       ''
@@ -430,11 +435,13 @@ export function StatewideSituationRoom({
     ].join(',');
 
     const metadata = [
-      '# INEC FORM EC8B WARD RESULTS COLLATION SCHEDULE (2027)',
+      '# ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM',
+      '# FORM EC8B WARD RESULTS COLLATION & AUDIT SCHEDULE (2027)',
+      '# TECHNICAL STATUS: Official Situation Room Platform by the Technical Team',
       '# STATE: KEBBI | LOCAL GOVERNMENT AREA: ' + targetLgaName.toUpperCase() + ' | WARD: ' + targetWardName.toUpperCase(),
       '# CONSTITUENCY: KEBBI STATE GUBERNATORIAL ELECTION',
       '# SUPERVISION: Statewide Situation Room Command (SAN Abubakar Malami Campaign)',
-      '# POWERED BY: GetoCore Digital Innovation in partnership with TEEM TECH Solution',
+      '# POWERED BY: GetoCore Digital Innovation & TEEM TECH Solution — Kaduna\'s #1 IT Companies with Election Ideas',
       '# IT TECHNICAL OFFICER: Fatima Sulaiman Umar (08035533332 / 09035328748)',
       '# DATE & TIME: ' + new Date().toLocaleString() + ' WAT',
       ''
@@ -840,7 +847,7 @@ export function StatewideSituationRoom({
           <div className="bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden space-y-0">
             <div className="p-3 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
               <span className="font-bold text-white uppercase tracking-wider text-[11px]">
-                INEC Form EC8D Tabulation Sheet ({filteredLGAs.length} of 21 LGAs)
+                Abubakar Malami (SAN) Situation Room — Form EC8D State Collation Sheet ({filteredLGAs.length} of 21 LGAs)
               </span>
               <span className="text-[10px] text-emerald-400 font-mono">
                 CONSTITUTIONAL SPREAD (25% in ≥14 LGAs): <strong className="text-emerald-300">{lgasMeeting25Pct}/21 MET</strong>
@@ -1080,7 +1087,7 @@ export function StatewideSituationRoom({
 
       </div>
 
-      {/* PRINTABLE OFFICIAL INEC FORM EC8D DECLARATION MODAL */}
+      {/* PRINTABLE OFFICIAL MALAMI 2027 SITUATION ROOM FORM EC8D DECLARATION MODAL */}
       {showPrintModal && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-sm p-4 sm:p-6 flex items-start justify-center animate-in fade-in">
           <div className="bg-white text-slate-900 rounded-2xl max-w-5xl w-full p-6 sm:p-8 space-y-6 shadow-2xl print-page my-6 border border-slate-300">
@@ -1110,15 +1117,18 @@ export function StatewideSituationRoom({
               </div>
             </div>
 
-            {/* Official INEC Header */}
+            {/* Official Situation Room Header */}
             <div className="text-center space-y-1 border-b-2 border-emerald-800 pb-4">
-              <div className="text-xs font-bold tracking-widest text-emerald-800 uppercase">
-                INDEPENDENT NATIONAL ELECTORAL COMMISSION
+              <div className="text-xs font-black tracking-widest text-emerald-800 uppercase">
+                ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM
               </div>
               <h2 className="text-xl sm:text-2xl font-black text-slate-950 uppercase tracking-tight">
-                FORM EC8D: STATE RESULTS COLLATION SUMMARY &amp; DECLARATION OF RETURN
+                FORM EC8D: STATE RESULTS COLLATION SUMMARY &amp; AUDIT DECLARATION
               </h2>
-              <div className="text-xs font-semibold text-slate-700">
+              <div className="text-xs font-bold text-emerald-900">
+                OFFICIAL PARALLEL VOTE TABULATION (PVT) &bull; OFFICIAL PLATFORM BY THE TECHNICAL TEAM
+              </div>
+              <div className="text-[11px] font-semibold text-slate-700">
                 ELECTION TO THE OFFICE OF THE GOVERNOR OF KEBBI STATE &bull; MARCH 2027
               </div>
               <div className="flex justify-center gap-6 text-xs font-mono pt-1 text-slate-800 font-bold">
@@ -1234,9 +1244,9 @@ export function StatewideSituationRoom({
               </div>
 
               {/* Technical Partnership Footnote */}
-              <div className="pt-2 border-t border-slate-200 flex flex-wrap justify-between items-center text-[9px] text-slate-500 font-mono">
-                <span>INEC FORM EC8D OFFICIAL TABULATION &bull; CRYPTOGRAPHICALLY SECURED</span>
-                <span>Platform Powered by <strong>GetoCore Digital Innovation</strong> in partnership with <strong>TEEM TECH Solution</strong></span>
+              <div className="pt-2 border-t border-slate-200 flex flex-wrap justify-between items-center text-[9px] text-slate-600 font-mono">
+                <span>ABUBAKAR MALAMI (SAN) 2027 SITUATION ROOM &bull; OFFICIAL PLATFORM BY THE TECHNICAL TEAM</span>
+                <span>Powered by <strong>GetoCore Digital Innovation &amp; TEEM TECH Solution</strong> (Kaduna&apos;s #1 IT Companies with Election Ideas) &bull; Lead IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</span>
               </div>
             </div>
 
@@ -1448,8 +1458,8 @@ export function StatewideSituationRoom({
 
               {/* Technical Footnote */}
               <div className="pt-2 border-t border-slate-800 flex flex-wrap justify-between items-center text-[10px] text-slate-400">
-                <span>Direct Access from Statewide Situation Room Command &bull; Tier 4 Clearance</span>
-                <span>Powered by <strong>GetoCore Digital Innovation</strong> &times; <strong>TEEM TECH Solution</strong></span>
+                <span>Direct Access from Statewide Situation Room Command &bull; Official Platform by the Technical Team</span>
+                <span>Powered by <strong>GetoCore Digital Innovation &amp; TEEM TECH Solution</strong> (Kaduna&apos;s #1 IT Companies with Election Ideas)</span>
               </div>
 
             </div>
@@ -1457,7 +1467,7 @@ export function StatewideSituationRoom({
         );
       })()}
 
-      {/* ── 2. PRINTABLE OFFICIAL INEC FORM EC8C LGA DECLARATION MODAL (PDF) ── */}
+      {/* ── 2. PRINTABLE OFFICIAL MALAMI 2027 SITUATION ROOM FORM EC8C LGA DECLARATION MODAL (PDF) ── */}
       {showLgaPrintModal && (() => {
         const activeLgaObj = lgas.find(l => l.name.toLowerCase() === selectedLgaName.toLowerCase()) || lgas[0];
         const wards = getLgaWardsData(activeLgaObj);
@@ -1508,15 +1518,18 @@ export function StatewideSituationRoom({
                 </div>
               </div>
 
-              {/* Official INEC Header */}
+              {/* Official Situation Room Header */}
               <div className="text-center space-y-1 border-b-2 border-emerald-800 pb-4">
-                <div className="text-xs font-bold tracking-widest text-emerald-800 uppercase">
-                  INDEPENDENT NATIONAL ELECTORAL COMMISSION (INEC)
+                <div className="text-xs font-black tracking-widest text-emerald-800 uppercase">
+                  ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM
                 </div>
                 <h2 className="text-xl sm:text-2xl font-black text-slate-950 uppercase tracking-tight">
-                  FORM EC8C: SUMMARY OF RESULTS AT LOCAL GOVERNMENT COLLATION LEVEL
+                  FORM EC8C: LGA RESULTS COLLATION &amp; AUDIT SUMMARY
                 </h2>
-                <div className="text-xs font-semibold text-slate-700">
+                <div className="text-xs font-bold text-emerald-900">
+                  OFFICIAL PLATFORM BY THE TECHNICAL TEAM &bull; LOCAL GOVERNMENT AREA RESULTS AUDIT DESK
+                </div>
+                <div className="text-[11px] font-semibold text-slate-700">
                   ELECTION TO THE OFFICE OF THE GOVERNOR OF KEBBI STATE &bull; MARCH 2027
                 </div>
                 <div className="flex flex-wrap justify-center gap-4 text-xs font-mono pt-1 text-slate-800 font-bold">
@@ -1618,9 +1631,9 @@ export function StatewideSituationRoom({
                 </div>
 
                 {/* Technical Partnership Footnote */}
-                <div className="pt-2 border-t border-slate-200 flex flex-wrap justify-between items-center text-[9px] text-slate-500 font-mono">
-                  <span>INEC FORM EC8C OFFICIAL LGA TABULATION &bull; CERTIFIED TRUE COPY</span>
-                  <span>Powered by <strong>GetoCore Digital Innovation</strong> in partnership with <strong>TEEM TECH Solution</strong> &bull; Lead IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</span>
+                <div className="pt-2 border-t border-slate-200 flex flex-wrap justify-between items-center text-[9px] text-slate-600 font-mono">
+                  <span>ABUBAKAR MALAMI (SAN) 2027 SITUATION ROOM &bull; OFFICIAL FORM EC8C LGA TABULATION</span>
+                  <span>Official Platform by the Technical Team &bull; Powered by <strong>GetoCore Digital Innovation &amp; TEEM TECH Solution</strong> (Kaduna&apos;s #1 IT Companies with Election Ideas) &bull; Lead IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</span>
                 </div>
               </div>
 
@@ -1629,7 +1642,7 @@ export function StatewideSituationRoom({
         );
       })()}
 
-      {/* ── 3. PRINTABLE OFFICIAL INEC FORM EC8B WARD CERTIFICATE MODAL (PDF) ── */}
+      {/* ── 3. PRINTABLE OFFICIAL MALAMI 2027 SITUATION ROOM FORM EC8B WARD CERTIFICATE MODAL (PDF) ── */}
       {showWardPrintModal && (() => {
         const activeLgaObj = lgas.find(l => l.name.toLowerCase() === selectedLgaName.toLowerCase()) || lgas[0];
         const pus = getWardPollingUnitsData(activeLgaObj, selectedWardName);
@@ -1677,15 +1690,18 @@ export function StatewideSituationRoom({
                 </div>
               </div>
 
-              {/* Official Header */}
+              {/* Official Situation Room Header */}
               <div className="text-center space-y-1 border-b-2 border-amber-600 pb-4">
-                <div className="text-xs font-bold tracking-widest text-amber-800 uppercase">
-                  INDEPENDENT NATIONAL ELECTORAL COMMISSION (INEC)
+                <div className="text-xs font-black tracking-widest text-amber-900 uppercase">
+                  ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM
                 </div>
                 <h2 className="text-xl sm:text-2xl font-black text-slate-950 uppercase tracking-tight">
-                  FORM EC8B: SUMMARY OF RESULTS AT REGISTRATION AREA (WARD) COLLATION LEVEL
+                  FORM EC8B: WARD RESULTS COLLATION &amp; AUDIT SUMMARY
                 </h2>
-                <div className="text-xs font-semibold text-slate-700">
+                <div className="text-xs font-bold text-emerald-900">
+                  OFFICIAL PLATFORM BY THE TECHNICAL TEAM &bull; REGISTRATION AREA (WARD) COLLATION DESK
+                </div>
+                <div className="text-[11px] font-semibold text-slate-700">
                   ELECTION TO THE OFFICE OF THE GOVERNOR OF KEBBI STATE &bull; MARCH 2027
                 </div>
                 <div className="flex flex-wrap justify-center gap-4 text-xs font-mono pt-1 text-slate-800 font-bold">
@@ -1788,9 +1804,9 @@ export function StatewideSituationRoom({
                 </div>
 
                 {/* Technical Partnership Footnote */}
-                <div className="pt-2 border-t border-slate-200 flex flex-wrap justify-between items-center text-[9px] text-slate-500 font-mono">
-                  <span>INEC FORM EC8B OFFICIAL WARD TABULATION SHEET &bull; STATUTORY LEGAL RECORD</span>
-                  <span>Powered by <strong>GetoCore Digital Innovation</strong> in partnership with <strong>TEEM TECH Solution</strong> &bull; Lead IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</span>
+                <div className="pt-2 border-t border-slate-200 flex flex-wrap justify-between items-center text-[9px] text-slate-600 font-mono">
+                  <span>ABUBAKAR MALAMI (SAN) 2027 SITUATION ROOM &bull; OFFICIAL FORM EC8B WARD TABULATION</span>
+                  <span>Official Platform by the Technical Team &bull; Powered by <strong>GetoCore Digital Innovation &amp; TEEM TECH Solution</strong> (Kaduna&apos;s #1 IT Companies with Election Ideas) &bull; Lead IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</span>
                 </div>
               </div>
 

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Malami 2027 | Kebbi Election Monitoring Command Center',
-  description: 'Official Election Day Collation & Legal Defense Platform for Abubakar Malami, SAN, CON (ADC). Powered by GetoCore Digital Innovation in partnership with TEEM TECH Solution.',
+  title: 'Abubakar Malami (SAN) Election 2027 Situation Room | Official Command',
+  description: 'Abubakar Malami (SAN) Election 2027 Situation Room — Official Platform by the Technical Team. Powered by GetoCore Digital Innovation & TEEM TECH Solution (Kaduna\'s #1 IT Companies with Election Ideas).',
   authors: [
     { name: 'GetoCore Digital Innovation' },
     { name: 'TEEM TECH Solution' }
