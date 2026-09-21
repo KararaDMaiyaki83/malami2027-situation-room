@@ -20,7 +20,8 @@ import {
   ShieldCheck,
   Download,
   DollarSign,
-  Sparkles
+  Sparkles,
+  KeyRound
 } from 'lucide-react';
 import { InstallAppModal } from '@/components/pwa/InstallAppModal';
 
@@ -29,6 +30,7 @@ export type ActiveTab =
   | 'LGA_SUPERVISOR'
   | 'RA_SUPERVISOR'
   | 'PU_AGENT'
+  | 'AGENT_ACCREDITATION'
   | 'CHAIN_OF_CUSTODY'
   | 'INCIDENT_DESK'
   | 'COMMS_HUB'
@@ -58,6 +60,7 @@ export function getAllowedTabsForRole(role?: UserRole): ActiveTab[] {
         'LGA_SUPERVISOR', 
         'RA_SUPERVISOR', 
         'PU_AGENT', 
+        'AGENT_ACCREDITATION',
         'CHAIN_OF_CUSTODY', 
         'INCIDENT_DESK', 
         'COMMS_HUB', 
@@ -110,19 +113,20 @@ export function Navbar({
     { id: 'LGA_SUPERVISOR', label: '2. LGA Collation Desk', icon: Scale },
     { id: 'RA_SUPERVISOR', label: '3. Ward (RA) Collation', icon: Building2 },
     { id: 'PU_AGENT', label: '4. PU Agent PWA', icon: Smartphone },
-    { id: 'CHAIN_OF_CUSTODY', label: '5. Results Chain Audit', icon: Layers },
+    { id: 'AGENT_ACCREDITATION', label: '5. Security & Accreditation', icon: KeyRound },
+    { id: 'CHAIN_OF_CUSTODY', label: '6. Results Chain Audit', icon: Layers },
     { 
       id: 'INCIDENT_DESK', 
-      label: '6. Incident & SOS', 
+      label: '7. Incident & SOS', 
       icon: AlertTriangle,
       badge: activeIncidentCount > 0 ? `${activeIncidentCount} Active` : undefined 
     },
-    { id: 'COMMS_HUB', label: '7. Comms & Fallback', icon: Radio },
-    { id: 'FORENSICS', label: '8. EC8A Forensic Audit', icon: FileCheck2 },
-    { id: 'IREV_PVT_AUDIT', label: '9. PVT vs IReV Audit', icon: ShieldCheck },
-    { id: 'PITCH_DECK', label: '10. Malami Pitch Deck', icon: Presentation },
-    { id: 'FINANCIAL_BUDGET', label: '11. Financial Budget', icon: DollarSign },
-    { id: 'STRATEGIC_INNOVATIONS', label: '12. Vision 2027 Innovations', icon: Sparkles },
+    { id: 'COMMS_HUB', label: '8. Comms & Fallback', icon: Radio },
+    { id: 'FORENSICS', label: '9. EC8A Forensic Audit', icon: FileCheck2 },
+    { id: 'IREV_PVT_AUDIT', label: '10. PVT vs IReV Audit', icon: ShieldCheck },
+    { id: 'PITCH_DECK', label: '11. Malami Pitch Deck', icon: Presentation },
+    { id: 'FINANCIAL_BUDGET', label: '12. Financial Budget', icon: DollarSign },
+    { id: 'STRATEGIC_INNOVATIONS', label: '13. Vision 2027 Innovations', icon: Sparkles },
   ].filter(item => allowedTabs.includes(item.id as ActiveTab));
 
   return (

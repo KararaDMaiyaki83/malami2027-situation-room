@@ -20,6 +20,10 @@ export interface AppUser {
   status: 'APPROVED' | 'PENDING' | 'REJECTED';
   registeredAt?: string;
   pvcNumber?: string;
+  securityHash?: string;
+  qrCodeToken?: string;
+  clearanceLevel?: string;
+  issuedBy?: string;
 }
 
 export const INITIAL_USERS: AppUser[] = [

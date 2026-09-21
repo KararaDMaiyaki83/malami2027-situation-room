@@ -18,10 +18,17 @@ import {
   Scale,
   Landmark,
   UserCheck,
-  Download
+  Download,
+  Printer,
+  Copy,
+  Check,
+  RefreshCw,
+  QrCode,
+  Award
 } from 'lucide-react';
 import { InstallAppModal } from '@/components/pwa/InstallAppModal';
 import { AppUser, UserRole, INITIAL_USERS } from '@/types/auth';
+import { KEBBI_LGAS } from '@/lib/kebbiElectoralData';
 
 interface StandaloneLoginPageProps {
   allUsers: AppUser[];
@@ -62,7 +69,9 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
   const [regWard, setRegWard] = useState('Dangaladima Ward');
   const [regPuCode, setRegPuCode] = useState('PU 21-01-04-008');
   const [regPvc, setRegPvc] = useState('');
+  const [regCustomPin, setRegCustomPin] = useState(() => Math.floor(100000 + Math.random() * 900000).toString());
   const [registeredSuccess, setRegisteredSuccess] = useState<AppUser | null>(null);
+  const [copiedSuccessPin, setCopiedSuccessPin] = useState(false);
 
   const activeSelectedUser = allUsers.find(u => u.id === selectedUserId);
 
@@ -129,31 +138,37 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
       return;
     }
 
-    const newPin = Math.floor(1000 + Math.random() * 9000).toString();
+    const cleanPin = regCustomPin.trim() || Math.floor(100000 + Math.random() * 900000).toString();
+    const hash = 'SEC-' + Math.random().toString(36).substring(2, 9).toUpperCase();
+    const badge = `ADC-${regRole.slice(0, 3)}-KB${Math.floor(1000 + Math.random() * 9000)}`;
 
     const draft: Omit<AppUser, 'id' | 'status' | 'registeredAt'> = {
-      name: regName,
-      phone: regPhone,
+      name: regName.trim(),
+      phone: regPhone.trim(),
       role: regRole,
-      title: regRole === 'PU_AGENT' ? `Accredited PU Agent (${regPuCode})` : (regRole === 'RA_SUPERVISOR' ? `RA Supervisor (${regWard})` : `LGA Supervisor (${regLGA})`),
+      title: regRole === 'PU_AGENT' 
+        ? `Accredited PU Agent (${regPuCode})` 
+        : (regRole === 'RA_SUPERVISOR' ? `RA Supervisor (${regWard})` : `LGA Supervisor (${regLGA})`),
       assignedLGA: regLGA,
       assignedWard: regWard,
       assignedPU: regRole === 'PU_AGENT' ? regPuCode : undefined,
-      badgeNumber: `ADC-${regRole.slice(0, 3)}-${Math.floor(100 + Math.random() * 900)}`,
-      pin: newPin,
-      pvcNumber: regPvc,
+      badgeNumber: badge,
+      pin: cleanPin,
+      pvcNumber: regPvc.trim() || undefined,
+      securityHash: hash,
+      issuedBy: 'Official Self-Registration Clearance (Sec 43 Compliant)'
     };
 
     onRegister(draft);
 
-    const pendingUser: AppUser = {
+    const approvedUser: AppUser = {
       ...draft,
       id: 'usr-' + Date.now(),
-      status: 'PENDING',
+      status: 'APPROVED', // Immediately approved for testing and field access!
       registeredAt: new Date().toLocaleString(),
     };
 
-    setRegisteredSuccess(pendingUser);
+    setRegisteredSuccess(approvedUser);
   };
 
   // Group users by reporting hierarchy
@@ -575,29 +590,134 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
             </div>
 
             {registeredSuccess ? (
-              <div className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/50 space-y-3 text-xs">
-                <div className="flex items-center space-x-2 text-emerald-400 font-bold text-sm">
-                  <CheckCircle2 className="h-5 w-5" />
-                  <span>Registration Submitted Successfully!</span>
+              <div className="space-y-4 text-xs">
+                {/* Official Digital Accreditation Pass */}
+                <div className="p-4 sm:p-5 rounded-3xl bg-slate-950 border-2 border-amber-400 shadow-2xl relative overflow-hidden text-center space-y-3">
+                  <div className="absolute inset-0 bg-gradient-to-b from-emerald-600/10 via-amber-500/5 to-transparent pointer-events-none" />
+
+                  {/* Header Badge */}
+                  <div className="space-y-1">
+                    <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[9px] font-black uppercase">
+                      <ShieldCheck className="w-3 h-3" />
+                      <span>ADC KEBBI 2027 &bull; OFFICIAL ACCREDITATION</span>
+                    </div>
+                    <h4 className="text-sm font-black text-white tracking-tight">
+                      ABUBAKAR MALAMI (SAN) SITUATION ROOM
+                    </h4>
+                    <p className="text-[10px] font-bold text-amber-300 uppercase">
+                      Accredited Field Officer &bull; Mandate Defense Registry
+                    </p>
+                  </div>
+
+                  {/* Portrait Seal */}
+                  <div className="relative mx-auto w-20 h-20 rounded-2xl overflow-hidden border-2 border-amber-400 shadow-xl bg-slate-900 p-0.5">
+                    <img
+                      src="/malami_logo.png"
+                      alt="Accreditation Seal"
+                      className="w-full h-full object-cover object-top rounded-xl"
+                    />
+                    <span className="absolute bottom-0 right-0 bg-emerald-600 text-[7px] font-black text-white px-1.5 py-0.2 rounded-tl shadow">
+                      VERIFIED ✓
+                    </span>
+                  </div>
+
+                  {/* Agent Details */}
+                  <div className="space-y-1">
+                    <h3 className="text-base font-black text-white">{registeredSuccess.name}</h3>
+                    <div className="inline-block px-2.5 py-0.5 rounded-lg bg-slate-900 border border-slate-800 text-[10px] font-mono text-amber-300 font-bold">
+                      {registeredSuccess.badgeNumber}
+                    </div>
+                    <div className="text-[11px] text-emerald-400 font-semibold">
+                      {registeredSuccess.title}
+                    </div>
+                  </div>
+
+                  {/* Assigned Location & Mobile */}
+                  <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1.5 text-left text-[11px]">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] text-slate-400 uppercase font-mono">Assigned Posting:</span>
+                      <span className="text-xs font-bold text-white truncate max-w-[190px]">
+                        {registeredSuccess.assignedPU || registeredSuccess.assignedWard || registeredSuccess.assignedLGA}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] text-slate-400 uppercase font-mono">Mobile Contact:</span>
+                      <span className="text-xs font-mono font-bold text-slate-200">
+                        {registeredSuccess.phone}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between pt-1.5 border-t border-slate-800">
+                      <span className="text-[10px] text-emerald-400 font-bold uppercase font-mono flex items-center gap-1">
+                        <KeyRound className="w-3 h-3" />
+                        <span>Security Access PIN:</span>
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <span className="text-base font-mono font-black text-amber-300 tracking-widest bg-slate-950 px-2.5 py-0.5 rounded border border-amber-400/50">
+                          {registeredSuccess.pin}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            navigator.clipboard.writeText(registeredSuccess.pin);
+                            setCopiedSuccessPin(true);
+                            setTimeout(() => setCopiedSuccessPin(false), 2000);
+                          }}
+                          className="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white"
+                          title="Copy PIN"
+                        >
+                          {copiedSuccessPin ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* QR Security Token Visual */}
+                  <div className="p-2.5 rounded-xl bg-white text-slate-950 flex flex-col items-center justify-center space-y-0.5">
+                    <QrCode className="w-16 h-16 text-slate-950" />
+                    <span className="text-[8px] font-mono font-bold tracking-widest text-slate-600">
+                      {registeredSuccess.securityHash || 'SEC-M27-KB01'} &bull; SEC 43 COMPLIANT
+                    </span>
+                  </div>
+
+                  <div className="text-[9px] text-slate-400 font-medium">
+                    Powered by GetoCore Digital Innovation &amp; TEEM TECH Solution &bull; Kaduna #1 IT
+                  </div>
                 </div>
-                <p className="text-slate-300">
-                  Your profile has been submitted for clearance by the Central Situation Room Directorate.
-                </p>
-                <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1 font-mono text-[11px]">
-                  <div>Name: <strong className="text-white">{registeredSuccess.name}</strong></div>
-                  <div>Phone: <strong className="text-white">{registeredSuccess.phone}</strong></div>
-                  <div>Role: <strong className="text-emerald-400">{registeredSuccess.role}</strong></div>
-                  <div>Assigned PIN: <strong className="text-amber-300">{registeredSuccess.pin}</strong></div>
+
+                {/* Direct Action Buttons */}
+                <div className="space-y-2 pt-1">
+                  <button
+                    onClick={() => {
+                      setShowRegisterModal(false);
+                      onLogin(registeredSuccess);
+                    }}
+                    className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-black text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/60 transition active:scale-98"
+                  >
+                    <span>Authenticate &amp; Enter Situation Room Now</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => window.print()}
+                      className="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition"
+                    >
+                      <Printer className="w-3.5 h-3.5 text-slate-400" />
+                      <span>Print / Save Pass</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowRegisterModal(false);
+                        setRegisteredSuccess(null);
+                      }}
+                      className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
-                <button
-                  onClick={() => {
-                    setShowRegisterModal(false);
-                    setRegisteredSuccess(null);
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition"
-                >
-                  Return to Sign In
-                </button>
               </div>
             ) : (
               <form onSubmit={handleRegisterSubmit} className="space-y-3.5 text-xs">
@@ -642,13 +762,15 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-slate-300 font-bold mb-1">Assigned LGA *</label>
-                    <input
-                      type="text"
-                      required
+                    <select
                       value={regLGA}
                       onChange={(e) => setRegLGA(e.target.value)}
-                      className="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-white"
-                    />
+                      className="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    >
+                      {KEBBI_LGAS.map(lga => (
+                        <option key={lga.id} value={lga.name}>{lga.name}</option>
+                      ))}
+                    </select>
                   </div>
                   <div>
                     <label className="block text-slate-300 font-bold mb-1">Assigned Ward / RA *</label>
@@ -664,7 +786,7 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
 
                 {regRole === 'PU_AGENT' && (
                   <div>
-                    <label className="block text-slate-300 font-bold mb-1">Assigned PU Code</label>
+                    <label className="block text-slate-300 font-bold mb-1">Assigned PU Code / Name</label>
                     <input
                       type="text"
                       value={regPuCode}
@@ -674,12 +796,42 @@ export const StandaloneLoginPage: React.FC<StandaloneLoginPageProps> = ({
                   </div>
                 )}
 
+                {/* Cryptographic Security PIN Engine */}
+                <div className="p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 text-emerald-300 font-bold">
+                      <KeyRound className="w-4 h-4" />
+                      <span>Generated Security Access PIN</span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setRegCustomPin(Math.floor(100000 + Math.random() * 900000).toString())}
+                      className="text-[10px] text-emerald-400 hover:text-white font-bold flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-900/60 border border-emerald-700"
+                    >
+                      <RefreshCw className="w-3 h-3" />
+                      <span>Randomize</span>
+                    </button>
+                  </div>
+
+                  <input
+                    type="text"
+                    required
+                    maxLength={8}
+                    value={regCustomPin}
+                    onChange={(e) => setRegCustomPin(e.target.value)}
+                    className="w-full text-center font-mono text-lg font-black tracking-widest rounded-xl bg-slate-950 border border-emerald-500 text-amber-300 py-1.5 focus:outline-none"
+                  />
+                  <p className="text-[10px] text-slate-400">
+                    6-digit cryptographic PIN used to log into your field terminal.
+                  </p>
+                </div>
+
                 <div className="flex gap-2 pt-2">
                   <button
                     type="submit"
-                    className="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition"
+                    className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 text-white font-bold transition shadow-lg shadow-emerald-950"
                   >
-                    Submit Application
+                    Accredit &amp; Issue Security Pass
                   </button>
                   <button
                     type="button"

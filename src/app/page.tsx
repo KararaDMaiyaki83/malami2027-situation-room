@@ -13,6 +13,7 @@ import { IncidentCommandDesk } from '@/components/incidents/IncidentCommandDesk'
 import { StatewideCommsHub } from '@/components/communication/StatewideCommsHub';
 import { EC8AForensicVerifier } from '@/components/forensics/EC8AForensicVerifier';
 import { IReVPVTAuditDesk } from '@/components/irev/IReVPVTAuditDesk';
+import { AgentAccreditationDesk } from '@/components/situation-room/AgentAccreditationDesk';
 import { MalamiExecutivePitchDeck } from '@/components/pitch-deck/MalamiExecutivePitchDeck';
 import { FinancialImplicationsDesk } from '@/components/budget/FinancialImplicationsDesk';
 import { StrategicInnovationsDesk } from '@/components/innovations/StrategicInnovationsDesk';
@@ -33,6 +34,32 @@ export default function Home() {
   const [incidents, setIncidents] = useState<IncidentReport[]>(INITIAL_INCIDENTS);
   const [broadcasts, setBroadcasts] = useState<BroadcastLog[]>(INITIAL_BROADCASTS);
   const [targetChainLGA, setTargetChainLGA] = useState<string>('Birnin Kebbi');
+
+  // Load and merge persistent registered participants from localStorage
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('malami2027_registered_users');
+      if (saved) {
+        const parsed: AppUser[] = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const parsedIds = new Set(parsed.map(u => u.id));
+          const unmerged = INITIAL_USERS.filter(u => !parsedIds.has(u.id));
+          setUsers([...parsed, ...unmerged]);
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load registered users from localStorage:', e);
+    }
+  }, []);
+
+  const saveUsers = (newUsers: AppUser[]) => {
+    setUsers(newUsers);
+    try {
+      localStorage.setItem('malami2027_registered_users', JSON.stringify(newUsers));
+    } catch (e) {
+      console.error('Failed to persist users to localStorage:', e);
+    }
+  };
 
   // When user logs in, set active tab strictly according to their role hierarchy
   const handleLogin = (user: AppUser) => {
@@ -66,10 +93,10 @@ export default function Home() {
     const newUser: AppUser = {
       ...newUserDraft,
       id: 'usr-' + Date.now(),
-      status: 'PENDING',
+      status: 'APPROVED',
       registeredAt: new Date().toLocaleString(),
     };
-    setUsers(prev => [newUser, ...prev]);
+    saveUsers([newUser, ...users]);
   };
 
   // Dynamic simulation of incoming votes
@@ -239,6 +266,15 @@ export default function Home() {
             onResultSubmitted={(res) => {
               alert(`Form EEC8A verified and collated for ${res.puCode} (${res.ward})! ADC: ${res.adc}, APC: ${res.apc}`);
             }}
+          />
+        )}
+
+        {/* AGENT ACCREDITATION & CRYPTOGRAPHIC PIN DESK */}
+        {activeTab === 'AGENT_ACCREDITATION' && (
+          <AgentAccreditationDesk
+            users={users}
+            onUpdateUsers={saveUsers}
+            currentUser={currentUser}
           />
         )}
 
