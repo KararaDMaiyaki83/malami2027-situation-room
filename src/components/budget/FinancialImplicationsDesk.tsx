@@ -265,7 +265,17 @@ export function FinancialImplicationsDesk() {
             </button>
 
             <a
-              href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
+              href="/api/download?file=pdf"
+              download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pdf"
+              className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1.5 transition shrink-0 whitespace-nowrap shadow"
+              title="Download official presentation PDF deck (16:9 Landscape)"
+            >
+              <Download className="w-4 h-4 text-white shrink-0" />
+              <span>Download Deck (PDF)</span>
+            </a>
+
+            <a
+              href="/api/download?file=pptx"
               download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
               className="px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold text-xs flex items-center gap-1.5 transition shrink-0 whitespace-nowrap"
               title="Download editable PowerPoint (.pptx) file"

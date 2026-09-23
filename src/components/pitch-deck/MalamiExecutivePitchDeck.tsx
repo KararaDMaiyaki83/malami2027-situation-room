@@ -55,7 +55,7 @@ export function MalamiExecutivePitchDeck({ onOpenBudget }: { onOpenBudget?: () =
             </a>
 
             <a
-              href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pdf"
+              href="/api/download?file=pdf"
               download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pdf"
               className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 transition shadow whitespace-nowrap"
               title="Download official presentation PDF (16:9 Landscape)"
@@ -65,7 +65,7 @@ export function MalamiExecutivePitchDeck({ onOpenBudget }: { onOpenBudget?: () =
             </a>
 
             <a
-              href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
+              href="/api/download?file=pptx"
               download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
               className="px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 text-xs font-bold flex items-center gap-1.5 transition whitespace-nowrap"
               title="Download editable Microsoft PowerPoint (.pptx) file"
@@ -503,7 +503,7 @@ export function MalamiExecutivePitchDeck({ onOpenBudget }: { onOpenBudget?: () =
                 </div>
                 <div className="pt-1 flex flex-wrap gap-2">
                   <a
-                    href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pdf"
+                    href="/api/download?file=pdf"
                     download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pdf"
                     className="flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-center text-xs transition flex items-center justify-center gap-1.5"
                   >
@@ -511,7 +511,7 @@ export function MalamiExecutivePitchDeck({ onOpenBudget }: { onOpenBudget?: () =
                     <span>Download PDF Deck</span>
                   </a>
                   <a
-                    href="/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
+                    href="/api/download?file=pptx"
                     download="Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
                     className="py-2 px-3 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/40 text-xs font-bold transition flex items-center justify-center gap-1"
                   >
