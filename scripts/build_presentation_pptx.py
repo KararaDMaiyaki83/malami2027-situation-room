@@ -1,6 +1,7 @@
 import os
 import zipfile
 import shutil
+from xml.sax.saxutils import escape
 
 OUTPUT_DIR = "pptx_build"
 PPTX_FILE = "public/Kebbi_2027_Malami_ADC_Situation_Room_Presentation.pptx"
@@ -15,6 +16,11 @@ os.makedirs(f"{OUTPUT_DIR}/ppt/slides/_rels", exist_ok=True)
 os.makedirs(f"{OUTPUT_DIR}/ppt/slideLayouts/_rels", exist_ok=True)
 os.makedirs(f"{OUTPUT_DIR}/ppt/slideMasters/_rels", exist_ok=True)
 os.makedirs(f"{OUTPUT_DIR}/ppt/theme", exist_ok=True)
+
+def safe(text):
+    if text is None:
+        return ""
+    return escape(str(text))
 
 # 1. [Content_Types].xml
 content_types = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -35,7 +41,7 @@ content_types = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <Override PartName="/ppt/slides/slide8.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>
 </Types>"""
 
-with open(f"{OUTPUT_DIR}/[Content_Types].xml", "w") as f:
+with open(f"{OUTPUT_DIR}/[Content_Types].xml", "w", encoding="utf-8") as f:
     f.write(content_types)
 
 # 2. _rels/.rels
@@ -44,7 +50,7 @@ rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="ppt/presentation.xml"/>
 </Relationships>"""
 
-with open(f"{OUTPUT_DIR}/_rels/.rels", "w") as f:
+with open(f"{OUTPUT_DIR}/_rels/.rels", "w", encoding="utf-8") as f:
     f.write(rels)
 
 # 3. ppt/presentation.xml (16:9 widescreen 12192000 x 6858000)
@@ -67,7 +73,7 @@ presentation = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <p:notesSz cx="6858000" cy="9144000"/>
 </p:presentation>"""
 
-with open(f"{OUTPUT_DIR}/ppt/presentation.xml", "w") as f:
+with open(f"{OUTPUT_DIR}/ppt/presentation.xml", "w", encoding="utf-8") as f:
     f.write(presentation)
 
 # 4. ppt/_rels/presentation.xml.rels
@@ -84,12 +90,12 @@ pres_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <Relationship Id="rId9" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide" Target="slides/slide8.xml"/>
 </Relationships>"""
 
-with open(f"{OUTPUT_DIR}/ppt/_rels/presentation.xml.rels", "w") as f:
+with open(f"{OUTPUT_DIR}/ppt/_rels/presentation.xml.rels", "w", encoding="utf-8") as f:
     f.write(pres_rels)
 
 # 5. ppt/theme/theme1.xml
 theme = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="ADC Malami Theme">
+<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Malami Situation Room Theme">
   <a:themeElements>
     <a:clrScheme name="MalamiExecutive">
       <a:dk1><a:srgbClr val="020617"/></a:dk1>
@@ -106,8 +112,8 @@ theme = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
       <a:folHlink><a:srgbClr val="A855F7"/></a:folHlink>
     </a:clrScheme>
     <a:fontScheme name="Office">
-      <a:majorFont><a:latin typeface="Helvetica Neue"/></a:majorFont>
-      <a:minorFont><a:latin typeface="Arial"/></a:minorFont>
+      <a:majorFont><a:latin typeface="Calibri"/></a:majorFont>
+      <a:minorFont><a:latin typeface="Calibri"/></a:minorFont>
     </a:fontScheme>
     <a:fmtScheme name="Office">
       <a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:fillStyleLst>
@@ -118,7 +124,7 @@ theme = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   </a:themeElements>
 </a:theme>"""
 
-with open(f"{OUTPUT_DIR}/ppt/theme/theme1.xml", "w") as f:
+with open(f"{OUTPUT_DIR}/ppt/theme/theme1.xml", "w", encoding="utf-8") as f:
     f.write(theme)
 
 # 6. ppt/slideMasters/slideMaster1.xml
@@ -139,7 +145,7 @@ master = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   </p:sldLayoutIdLst>
 </p:sldMaster>"""
 
-with open(f"{OUTPUT_DIR}/ppt/slideMasters/slideMaster1.xml", "w") as f:
+with open(f"{OUTPUT_DIR}/ppt/slideMasters/slideMaster1.xml", "w", encoding="utf-8") as f:
     f.write(master)
 
 master_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -148,7 +154,7 @@ master_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme" Target="../theme/theme1.xml"/>
 </Relationships>"""
 
-with open(f"{OUTPUT_DIR}/ppt/slideMasters/_rels/slideMaster1.xml.rels", "w") as f:
+with open(f"{OUTPUT_DIR}/ppt/slideMasters/_rels/slideMaster1.xml.rels", "w", encoding="utf-8") as f:
     f.write(master_rels)
 
 # 7. ppt/slideLayouts/slideLayout1.xml
@@ -162,7 +168,7 @@ layout = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   </p:cSld>
 </p:sldLayout>"""
 
-with open(f"{OUTPUT_DIR}/ppt/slideLayouts/slideLayout1.xml", "w") as f:
+with open(f"{OUTPUT_DIR}/ppt/slideLayouts/slideLayout1.xml", "w", encoding="utf-8") as f:
     f.write(layout)
 
 layout_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -170,24 +176,26 @@ layout_rels = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster" Target="../slideMasters/slideMaster1.xml"/>
 </Relationships>"""
 
-with open(f"{OUTPUT_DIR}/ppt/slideLayouts/_rels/slideLayout1.xml.rels", "w") as f:
+with open(f"{OUTPUT_DIR}/ppt/slideLayouts/_rels/slideLayout1.xml.rels", "w", encoding="utf-8") as f:
     f.write(layout_rels)
 
-# Helper function to generate shape XML
-def create_card_shape(shape_id, x, y, cx, cy, title, items, fill_hex="0F172A", border_hex="334155", title_color="F8FAFC", title_size=2000):
+# Helper function to generate shape XML with strict XML escaping
+def create_card_shape(shape_id, x, y, cx, cy, title, items, fill_hex="0F172A", border_hex="334155", title_color="F8FAFC", title_size=1800, body_size=1200):
     lines_xml = ""
     for item in items:
+        clean_item = safe(item)
         lines_xml += f"""
         <a:p>
-          <a:pPr lvl="0" marL="285750"><a:buChar char="•"/><a:spcBef><a:spcPts val="600"/></a:spcBef></a:pPr>
+          <a:pPr lvl="0" marL="285750"><a:buChar char="•"/><a:spcBef><a:spcPts val="500"/></a:spcBef></a:pPr>
           <a:r>
-            <a:rPr lang="en-US" sz="1300" b="0">
+            <a:rPr lang="en-US" sz="{body_size}" b="0">
               <a:solidFill><a:srgbClr val="CBD5E1"/></a:solidFill>
             </a:rPr>
-            <a:t>{item}</a:t>
+            <a:t>{clean_item}</a:t>
           </a:r>
         </a:p>"""
 
+    clean_title = safe(title)
     return f"""
     <p:sp>
       <p:nvSpPr>
@@ -205,12 +213,12 @@ def create_card_shape(shape_id, x, y, cx, cy, title, items, fill_hex="0F172A", b
         <a:bodyPr lIns="200000" tIns="200000" rIns="200000" bIns="200000"/>
         <a:lstStyle/>
         <a:p>
-          <a:pPr><a:spcAft><a:spcPts val="800"/></a:spcAft></a:pPr>
+          <a:pPr><a:spcAft><a:spcPts val="600"/></a:spcAft></a:pPr>
           <a:r>
             <a:rPr lang="en-US" sz="{title_size}" b="1">
               <a:solidFill><a:srgbClr val="{title_color}"/></a:solidFill>
             </a:rPr>
-            <a:t>{title}</a:t>
+            <a:t>{clean_title}</a:t>
           </a:r>
         </a:p>
         {lines_xml}
@@ -218,12 +226,15 @@ def create_card_shape(shape_id, x, y, cx, cy, title, items, fill_hex="0F172A", b
     </p:sp>"""
 
 def create_header_footer(slide_num, tag, title, subtitle):
+    clean_tag = safe(tag)
+    clean_title = safe(title)
+    clean_subtitle = safe(subtitle)
     return f"""
     <!-- Category Badge -->
     <p:sp>
       <p:nvSpPr><p:cNvPr id="10" name="Badge"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>
       <p:spPr>
-        <a:xfrm><a:off x="609600" y="457200"/><a:ext cx="4000000" cy="350000"/></a:xfrm>
+        <a:xfrm><a:off x="609600" y="457200"/><a:ext cx="4200000" cy="350000"/></a:xfrm>
         <a:prstGeom prst="roundRect"><a:avLst><a:gd name="adj" fmla="val 10000"/></a:avLst></a:prstGeom>
         <a:solidFill><a:srgbClr val="064E3B"/></a:solidFill>
         <a:ln w="12700"><a:solidFill><a:srgbClr val="10B981"/></a:solidFill></a:ln>
@@ -235,7 +246,7 @@ def create_header_footer(slide_num, tag, title, subtitle):
           <a:pPr algn="ctr"/>
           <a:r>
             <a:rPr lang="en-US" sz="1100" b="1"><a:solidFill><a:srgbClr val="34D399"/></a:solidFill></a:rPr>
-            <a:t>{tag}</a:t>
+            <a:t>{clean_tag}</a:t>
           </a:r>
         </a:p>
       </p:txBody>
@@ -252,8 +263,8 @@ def create_header_footer(slide_num, tag, title, subtitle):
         <a:lstStyle/>
         <a:p>
           <a:r>
-            <a:rPr lang="en-US" sz="2800" b="1"><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill></a:rPr>
-            <a:t>{title}</a:t>
+            <a:rPr lang="en-US" sz="2600" b="1"><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill></a:rPr>
+            <a:t>{clean_title}</a:t>
           </a:r>
         </a:p>
       </p:txBody>
@@ -270,8 +281,8 @@ def create_header_footer(slide_num, tag, title, subtitle):
         <a:lstStyle/>
         <a:p>
           <a:r>
-            <a:rPr lang="en-US" sz="1300"><a:solidFill><a:srgbClr val="94A3B8"/></a:solidFill></a:rPr>
-            <a:t>{subtitle}</a:t>
+            <a:rPr lang="en-US" sz="1200"><a:solidFill><a:srgbClr val="94A3B8"/></a:solidFill></a:rPr>
+            <a:t>{clean_subtitle}</a:t>
           </a:r>
         </a:p>
       </p:txBody>
@@ -289,7 +300,7 @@ def create_header_footer(slide_num, tag, title, subtitle):
         <a:p>
           <a:r>
             <a:rPr lang="en-US" sz="950"><a:solidFill><a:srgbClr val="64748B"/></a:solidFill></a:rPr>
-            <a:t>Prepared for Abubakar Malami, SAN, CON • Powered by GetoCore × TEEM TECH | IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</a:t>
+            <a:t>Abubakar Malami (SAN) Situation Room • Official Platform by Technical Team • Powered by GetoCore &amp; TEEM TECH (Kaduna #1 IT) | IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</a:t>
           </a:r>
           <a:r>
             <a:rPr lang="en-US" sz="1000" b="1"><a:solidFill><a:srgbClr val="10B981"/></a:solidFill></a:rPr>
@@ -299,45 +310,45 @@ def create_header_footer(slide_num, tag, title, subtitle):
       </p:txBody>
     </p:sp>"""
 
-# SLIDE 1: Title Slide
+# SLIDE 1: Title Slide (Cover Page)
 slide1_content = f"""
     <!-- Title Background Card -->
     <p:sp>
       <p:nvSpPr><p:cNvPr id="20" name="Hero"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>
       <p:spPr>
-        <a:xfrm><a:off x="1000000" y="1200000"/><a:ext cx="10192000" cy="4500000"/></a:xfrm>
+        <a:xfrm><a:off x="1000000" y="1100000"/><a:ext cx="10192000" cy="4700000"/></a:xfrm>
         <a:prstGeom prst="roundRect"><a:avLst><a:gd name="adj" fmla="val 2000"/></a:avLst></a:prstGeom>
         <a:solidFill><a:srgbClr val="0F172A"/></a:solidFill>
         <a:ln w="25400"><a:solidFill><a:srgbClr val="059669"/></a:solidFill></a:ln>
       </p:spPr>
       <p:txBody>
-        <a:bodyPr lIns="500000" tIns="400000" rIns="500000" bIns="400000" anchor="ctr"/>
+        <a:bodyPr lIns="500000" tIns="350000" rIns="500000" bIns="350000" anchor="ctr"/>
         <a:lstStyle/>
         <a:p>
           <a:pPr algn="ctr"/>
           <a:r>
             <a:rPr lang="en-US" sz="1300" b="1"><a:solidFill><a:srgbClr val="34D399"/></a:solidFill></a:rPr>
-            <a:t>AFRICAN DEMOCRATIC CONGRESS (ADC 🤝) • KEBBI 2027 GUBERNATORIAL PROJECT</a:t>
+            <a:t>AFRICAN DEMOCRATIC CONGRESS (ADC) • KEBBI 2027 GUBERNATORIAL PROJECT</a:t>
           </a:r>
         </a:p>
         <a:p>
-          <a:pPr algn="ctr"><a:spcBef><a:spcPts val="1200"/></a:spcBef><a:spcAft><a:spcPts val="800"/></a:spcAft></a:pPr>
+          <a:pPr algn="ctr"><a:spcBef><a:spcPts val="1000"/></a:spcBef><a:spcAft><a:spcPts val="600"/></a:spcAft></a:pPr>
           <a:r>
-            <a:rPr lang="en-US" sz="3400" b="1"><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill></a:rPr>
-            <a:t>ELECTORAL SITUATION ROOM &amp; PVT FORENSIC COMMAND</a:t>
+            <a:rPr lang="en-US" sz="3200" b="1"><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill></a:rPr>
+            <a:t>ABUBAKAR MALAMI (SAN) ELECTION 2027 SITUATION ROOM</a:t>
           </a:r>
         </a:p>
         <a:p>
-          <a:pPr algn="ctr"><a:spcAft><a:spcPts val="1800"/></a:spcAft></a:pPr>
+          <a:pPr algn="ctr"><a:spcAft><a:spcPts val="1200"/></a:spcAft></a:pPr>
           <a:r>
-            <a:rPr lang="en-US" sz="1800" b="1"><a:solidFill><a:srgbClr val="FBBF24"/></a:solidFill></a:rPr>
-            <a:t>Comprehensive Turnkey Strategy, Field Telemetry Architecture &amp; Financial Implications</a:t>
+            <a:rPr lang="en-US" sz="1600" b="1"><a:solidFill><a:srgbClr val="FBBF24"/></a:solidFill></a:rPr>
+            <a:t>Official Parallel Vote Tabulation (PVT) &amp; Electoral Defense Command</a:t>
           </a:r>
         </a:p>
         <a:p>
-          <a:pPr algn="ctr"><a:spcBef><a:spcPts val="800"/></a:spcBef></a:pPr>
+          <a:pPr algn="ctr"><a:spcBef><a:spcPts val="600"/></a:spcBef></a:pPr>
           <a:r>
-            <a:rPr lang="en-US" sz="1600" b="1"><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill></a:rPr>
+            <a:rPr lang="en-US" sz="1500" b="1"><a:solidFill><a:srgbClr val="FFFFFF"/></a:solidFill></a:rPr>
             <a:t>PREPARED FOR: ABUBAKAR MALAMI, SAN, CON</a:t>
           </a:r>
         </a:p>
@@ -345,14 +356,28 @@ slide1_content = f"""
           <a:pPr algn="ctr"/>
           <a:r>
             <a:rPr lang="en-US" sz="1200"><a:solidFill><a:srgbClr val="94A3B8"/></a:solidFill></a:rPr>
-            <a:t>Former Attorney-General of the Federation &amp; Minister of Justice | ADC Gubernatorial Standard Bearer</a:t>
+            <a:t>Former Attorney-General of the Federation &amp; Minister of Justice | ADC Gubernatorial Candidate</a:t>
           </a:r>
         </a:p>
         <a:p>
-          <a:pPr algn="ctr"><a:spcBef><a:spcPts val="1400"/></a:spcBef></a:pPr>
+          <a:pPr algn="ctr"><a:spcBef><a:spcPts val="1000"/></a:spcBef></a:pPr>
           <a:r>
-            <a:rPr lang="en-US" sz="1100" b="1"><a:solidFill><a:srgbClr val="34D399"/></a:solidFill></a:rPr>
-            <a:t>Powered by GetoCore Digital Innovation × TEEM TECH Solution | IT: Fatima Sulaiman Umar (08035533332 / 09035328748)</a:t>
+            <a:rPr lang="en-US" sz="1100" b="1"><a:solidFill><a:srgbClr val="10B981"/></a:solidFill></a:rPr>
+            <a:t>Official Platform by the Technical Team</a:t>
+          </a:r>
+        </a:p>
+        <a:p>
+          <a:pPr algn="ctr"><a:spcBef><a:spcPts val="400"/></a:spcBef></a:pPr>
+          <a:r>
+            <a:rPr lang="en-US" sz="1100"><a:solidFill><a:srgbClr val="CBD5E1"/></a:solidFill></a:rPr>
+            <a:t>Powered by GetoCore Digital Innovation &amp; TEEM TECH Solution (Kaduna&apos;s #1 IT Companies with Election Ideas)</a:t>
+          </a:r>
+        </a:p>
+        <a:p>
+          <a:pPr algn="ctr"><a:spcBef><a:spcPts val="300"/></a:spcBef></a:pPr>
+          <a:r>
+            <a:rPr lang="en-US" sz="1050" b="1"><a:solidFill><a:srgbClr val="FBBF24"/></a:solidFill></a:rPr>
+            <a:t>Lead IT Technical Officer: Fatima Sulaiman Umar (Hotlines: 08035533332 / 09035328748)</a:t>
           </a:r>
         </a:p>
       </p:txBody>
@@ -380,66 +405,70 @@ create_card_shape(31, 609600, 2000000, 2600000, 3900000, "TIER 1: 3,745 PU AGENT
   "Strict single-PU scoping.",
   "Offline local SQLite storage.",
   "100% PU coverage statewide."
-], fill_hex="0F172A", border_hex="38BDF8", title_color="38BDF8", title_size=1600) + \
+], fill_hex="0F172A", border_hex="38BDF8", title_color="38BDF8", title_size=1500, body_size=1100) + \
 create_card_shape(32, 3350000, 2000000, 2600000, 3900000, "TIER 2: 225 RA SUPERVISORS", [
   "Ward RAC collation oversight.",
   "Reconciliation of constituent PUs into Form EC8B.",
   "Instant Form EC8B CSV export.",
   "Motorbike rapid escort details."
-], fill_hex="0F172A", border_hex="10B981", title_color="34D399", title_size=1600) + \
+], fill_hex="0F172A", border_hex="10B981", title_color="34D399", title_size=1500, body_size=1100) + \
 create_card_shape(33, 6100000, 2000000, 2600000, 3900000, "TIER 3: 21 LGA SUPERVISORS", [
   "Assigned Legal Counsel at each INEC Collation Hall.",
   "Form EC8C mathematical audit.",
   "On-site filing of Section 51 protest affidavits to EO.",
   "Fast-response vehicle details."
-], fill_hex="0F172A", border_hex="A855F7", title_color="C084FC", title_size=1600) + \
+], fill_hex="0F172A", border_hex="A855F7", title_color="C084FC", title_size=1500, body_size=1100) + \
 create_card_shape(34, 8850000, 2000000, 2732400, 3900000, "TIER 4: STATE COMMAND", [
   "Birnin Kebbi Situation Room.",
   "Full oversight of all 21 LGAs.",
   "Live PVT vs IReV disparity audit.",
   "Sec 179(2) 25% spread tracker.",
   "Direct channel to SAN Malami."
-], fill_hex="064E3B", border_hex="F59E0B", title_color="FBBF24", title_size=1600)
+], fill_hex="064E3B", border_hex="F59E0B", title_color="FBBF24", title_size=1500, body_size=1100)
 
-# SLIDE 4: Technology & Engineering
+# SLIDE 4: Technology & Engineering (Fully Escaped, Rich & Beautiful)
 slide4_content = create_header_footer(4, "SLIDE 4: TECHNOLOGY ARCHITECTURE", "Proprietary Telemetry Engine (GetoCore × TEEM TECH)", "High-concurrency, offline-capable PWA with zero-plaintext cryptographic security") + \
-create_card_shape(41, 609600, 2000000, 3500000, 3900000, "OFFLINE-FIRST PWA ENGINE", [
-  "Built with Next.js 14, TailwindCSS & service workers.",
-  "SAN Malami portrait as mobile home screen icon for easy identification.",
-  "Works in deep rural areas (Sakaba, Danko-Wasagu, Bagudo) without network.",
-  "Instant background synchronization as soon as cellular signal is detected."
-], fill_hex="0F172A", border_hex="059669", title_color="34D399") + \
-create_card_shape(42, 4350000, 2000000, 3500000, 3900000, "DUAL GPS & IREV AUDIT", [
-  "Dual forensic verification: compares PU agent Form EC8A against public INEC IReV upload.",
-  "Geo-fence radius <= 15m flags illegal remote collation uploads immediately.",
-  "Automated scraping of IReV JSON / image endpoints for 3,745 polling units.",
-  "Instant discrepancy alerts with Form EC40G court evidence packets."
-], fill_hex="0F172A", border_hex="0284C7", title_color="38BDF8") + \
-create_card_shape(43, 8100000, 2000000, 3482400, 3900000, "BILINGUAL AI COPILOT", [
-  "Floating AI assistant with Hausa & English toggle (EN | HA).",
-  "Role-aware: BVAS restart protocols, Section 51 objections, and photo guidelines.",
-  "Encrypted SMS/USSD fallback gateway (500,000 SMS capacity).",
-  "Toll-free emergency dispatch hotline: 0800-ADC-MALAMI."
-], fill_hex="0F172A", border_hex="F59E0B", title_color="FBBF24")
+create_card_shape(41, 609600, 2000000, 3500000, 3900000, "1. OFFLINE-FIRST PWA ENGINE", [
+  "Built with Next.js 14, TypeScript and Service Workers for instant mobile performance.",
+  "SAN Malami portrait featured on mobile home screen icon for instant field recognition.",
+  "Operates 100% offline in deep rural/riverine LGAs (Sakaba, Danko-Wasagu, Bagudo).",
+  "Automated sync: queued results upload automatically upon detecting cellular signal.",
+  "Ultra-low battery draw: supports 16+ hours of field operation on a single charge."
+], fill_hex="0F172A", border_hex="059669", title_color="34D399", title_size=1600, body_size=1150) + \
+create_card_shape(42, 4350000, 2000000, 3500000, 3900000, "2. DUAL GPS & IREV AUDIT", [
+  "Dual forensic audit: compares PU agent Form EC8A against public INEC IReV uploads.",
+  "Geo-fence radius <= 15m instantly flags illegal remote collation attempts.",
+  "Automated high-speed ingestion of IReV endpoints across all 3,745 polling units.",
+  "Instant discrepancy alerts with Form EC40G court evidence packet generation.",
+  "Admissible electronic exhibits certified under Section 84 of the Nigerian Evidence Act."
+], fill_hex="0F172A", border_hex="0284C7", title_color="38BDF8", title_size=1600, body_size=1150) + \
+create_card_shape(43, 8100000, 2000000, 3482400, 3900000, "3. BILINGUAL AI LEGAL COPILOT", [
+  "Intelligent assistant with English and Hausa instant language toggle (EN | HA).",
+  "Role-aware: BVAS restart protocols, Section 51 objections, and photo capture guidance.",
+  "Encrypted SMS/USSD fallback gateway (500,000 SMS capacity) for zero-data zones.",
+  "Toll-free emergency legal dispatch hotline: 0800-ADC-MALAMI.",
+  "Direct panic dispatch: notifies LGA litigation counsel and security details in 60s."
+], fill_hex="0F172A", border_hex="F59E0B", title_color="FBBF24", title_size=1600, body_size=1150)
 
-# SLIDE 5: Constitutional Spread & Margin Analysis
+# SLIDE 5: Constitutional Spread & Margin Analysis (Fully Escaped, Rich & Beautiful)
 slide5_content = create_header_footer(5, "SLIDE 5: ELECTORAL MATHEMATICS", "Section 179(2) Spread & Section 51 Margin Strategy", "Ensuring constitutional spread across 14+ LGAs and insurmountable lead margin") + \
-create_card_shape(51, 609600, 2000000, 5200000, 3900000, "SECTION 179(2) CONSTITUTIONAL SPREAD", [
+create_card_shape(51, 609600, 2000000, 5200000, 3900000, "1. SECTION 179(2) CONSTITUTIONAL SPREAD", [
   "Constitutional Threshold: Requires highest number of votes + not less than 25% of votes cast in at least 2/3 of all LGAs (14 of 21 LGAs).",
-  "ADC Tactical Fortress (Kebbi Central): Overwhelming victory in Birnin Kebbi, Gwandu, Jega, Kalgo, Aliero, Maiyama, Bunza.",
-  "Southern Kebbi Coalition (Zuru & Yauri): Historic strategic alliance with Zuru, Danko-Wasagu, Sakaba, Fakai, Yauri, Ngaski, Shanga.",
+  "Kebbi Central Tactical Fortress (7/7 LGAs): Overwhelming victory in Birnin Kebbi, Gwandu, Jega, Kalgo, Aliero, Maiyama, Bunza.",
+  "Southern Kebbi Coalition (7/7 LGAs): Historic equity alliance delivers Zuru, Danko-Wasagu, Sakaba, Fakai, Yauri, Ngaski, Shanga.",
+  "Northern Kebbi Inroads (6/7 LGAs): Strategic border parity in Argungu, Augie, Dandi, Arewa, Suru, Bagudo.",
   "Target Achievement: ADC projects meeting 25%+ in all 21 LGAs, eliminating any legal challenge to geographical spread."
-], fill_hex="0F172A", border_hex="10B981", title_color="34D399") + \
-create_card_shape(52, 6382800, 2000000, 5200000, 3900000, "SECTION 51 SURPLUS MARGIN SHIELD", [
+], fill_hex="0F172A", border_hex="10B981", title_color="34D399", title_size=1700, body_size=1200) + \
+create_card_shape(52, 6382800, 2000000, 5200000, 3900000, "2. SECTION 51 SURPLUS MARGIN SHIELD", [
   "The Margin of Lead Rule: If Margin of Lead < Cancelled PVCs, Returning Officer must declare election INCONCLUSIVE.",
-  "Simulated 2027 Projections:",
-  "  • Total ADC Votes: 468,540 (54.5%)",
-  "  • Total APC Votes: 341,210 (39.7%)",
-  "  • Lead Margin: +127,330 votes",
+  "Simulated 2027 Projections for Kebbi State:",
+  "  • Total ADC Votes: 468,540 (54.5% of total votes cast)",
+  "  • Total APC Votes: 341,210 (39.7% of total votes cast)",
+  "  • Projected Lead Margin: +127,330 votes",
   "  • Statewide Cancelled PVCs: 52,300 votes",
   "Net Surplus Safety Buffer: +75,030 votes above cancelled PVCs.",
-  "Statutory Outcome: Decisive declaration of Abubakar Malami SAN on first ballot!"
-], fill_hex="064E3B", border_hex="F59E0B", title_color="FBBF24")
+  "Statutory Outcome: Decisive first-ballot declaration of Abubakar Malami SAN without rerun risk!"
+], fill_hex="064E3B", border_hex="F59E0B", title_color="FBBF24", title_size=1700, body_size=1200)
 
 # SLIDE 6: Implementation Roadmap & Mock Simulation
 slide6_content = create_header_footer(6, "SLIDE 6: ROLLOUT ROADMAP", "Statewide Implementation Timeline & Simulation Drills", "Rigorous step-by-step milestones ensuring 100% readiness prior to Election Day") + \
@@ -449,21 +478,21 @@ create_card_shape(61, 609600, 2000000, 3500000, 3900000, "PHASE 1: PROVISIONING 
   "Printing 4,200 laminated QR-code photo ID badges.",
   "Procurement of 3,745 backup power banks.",
   "Birnin Kebbi Command Centre physical outfitting."
-], fill_hex="0F172A", border_hex="38BDF8", title_color="38BDF8") + \
+], fill_hex="0F172A", border_hex="38BDF8", title_color="38BDF8", title_size=1600, body_size=1150) + \
 create_card_shape(62, 4350000, 2000000, 3500000, 3900000, "PHASE 2: SIMULATION (M-1)", [
   "Zonal training workshops (Central, North, South).",
   "Dry-run simulation drill across all 21 LGAs.",
   "Live BVAS zero-reading and mock EC8A upload.",
   "SMS gateway and satellite comms stress test.",
   "Serving legal protocols on INEC REC and security."
-], fill_hex="0F172A", border_hex="F59E0B", title_color="FBBF24") + \
+], fill_hex="0F172A", border_hex="F59E0B", title_color="FBBF24", title_size=1600, body_size=1150) + \
 create_card_shape(63, 8100000, 2000000, 3482400, 3900000, "PHASE 3: E-DAY EXECUTION", [
   "07:00 AM: Arrival & BVAS 000 verification.",
   "02:30 PM: Queue cutoff enforcement.",
   "04:30 PM: Form EC8A snapping & telemetry push.",
   "08:00 PM: Form EC8B & EC8C live reconciliation.",
   "02:00 AM: Form EC8D State Declaration Defense."
-], fill_hex="064E3B", border_hex="10B981", title_color="34D399")
+], fill_hex="064E3B", border_hex="10B981", title_color="34D399", title_size=1600, body_size=1150)
 
 # SLIDE 7: Financial Implication & Master Budget
 slide7_content = create_header_footer(7, "SLIDE 7: FINANCIAL IMPLICATIONS", "Comprehensive Turnkey Budget Breakdown (₦329,000,000)", "Transparent, itemized capital and operational cost structure across 7 cost centers") + \
@@ -477,7 +506,7 @@ create_card_shape(71, 609600, 2000000, 5200000, 3900000, "ITEMIZED COST CENTERS 
   "7. Legal Shield, CTC Procurement & Contingency: ₦37,792,500 (11.5%)",
   "TOTAL MANDATE SECURITY BUDGET: ₦329,000,000 (100.0%)",
   "Unit Metric: Approximately ₦87,850 per Polling Unit for total victory defense."
-], fill_hex="0F172A", border_hex="10B981", title_color="34D399") + \
+], fill_hex="0F172A", border_hex="10B981", title_color="34D399", title_size=1700, body_size=1150) + \
 create_card_shape(72, 6382800, 2000000, 5200000, 3900000, "PHASED 3-TRANCHE DISBURSEMENT", [
   "Tranche 1: Mobilization & Tech Provisioning (40%):",
   "  • ₦131,600,000 due at contract execution (T - 60 Days).",
@@ -490,7 +519,7 @@ create_card_shape(72, 6382800, 2000000, 5200000, 3900000, "PHASED 3-TRANCHE DISB
   "Tranche 3: D-Day Operations & Legal Vault (25%):",
   "  • ₦82,250,000 due 5 days before election (T - 5 Days).",
   "  • Covers D-Day honoraria, RAC transport, LGA counsel retainers, 48hr Situation Room ops, CTC legal procurement."
-], fill_hex="1E1B4B", border_hex="818CF8", title_color="C7D2FE")
+], fill_hex="1E1B4B", border_hex="818CF8", title_color="C7D2FE", title_size=1700, body_size=1150)
 
 # SLIDE 8: Governance & Strategic Sign-Off
 slide8_content = create_header_footer(8, "SLIDE 8: GOVERNANCE & CALL TO ACTION", "Accountability Controls & Project Commissioning", "Guaranteed auditability, zero waste, and immediate next steps for execution") + \
@@ -499,7 +528,7 @@ create_card_shape(81, 609600, 2000000, 5200000, 3900000, "FINANCIAL GOVERNANCE &
   "Milestone-Linked Escrow: Tranches released strictly upon verified delivery of each phase (e.g. 100% badge verification before Tranche 2).",
   "Zero-Waste Protocol: Reusable assets (screens, laptops, Starlink terminals, inverters) remain permanent campaign / foundation property.",
   "Real-Time Expenditure Telemetry: Financial dashboard tracking every disbursement across all 21 Local Government Areas."
-], fill_hex="0F172A", border_hex="38BDF8", title_color="38BDF8") + \
+], fill_hex="0F172A", border_hex="38BDF8", title_color="38BDF8", title_size=1700, body_size=1150) + \
 create_card_shape(82, 6382800, 2000000, 5200000, 3900000, "EXECUTIVE SIGN-OFF & COMMISSIONING", [
   "Immediate Next Steps:",
   "  1. Formal approval of the ₦329M Budget and 3-Tranche Schedule.",
@@ -510,7 +539,7 @@ create_card_shape(82, 6382800, 2000000, 5200000, 3900000, "EXECUTIVE SIGN-OFF & 
   "Support Hotlines: 08035533332 / 09035328748",
   "",
   "Confidence Commitment: This architecture guarantees that every vote cast for Abubakar Malami, SAN in all 3,745 PUs is counted, transmitted, and legally defended to the Supreme Court."
-], fill_hex="064E3B", border_hex="F59E0B", title_color="FBBF24")
+], fill_hex="064E3B", border_hex="F59E0B", title_color="FBBF24", title_size=1700, body_size=1150)
 
 slides = [
     slide1_content,
@@ -539,14 +568,14 @@ for i, slide_body in enumerate(slides, 1):
   <p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>
 </p:sld>"""
 
-    with open(f"{OUTPUT_DIR}/ppt/slides/slide{i}.xml", "w") as f:
+    with open(f"{OUTPUT_DIR}/ppt/slides/slide{i}.xml", "w", encoding="utf-8") as f:
         f.write(slide_xml)
 
     slide_rel = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/slideLayout1.xml"/>
 </Relationships>"""
-    with open(f"{OUTPUT_DIR}/ppt/slides/_rels/slide{i}.xml.rels", "w") as f:
+    with open(f"{OUTPUT_DIR}/ppt/slides/_rels/slide{i}.xml.rels", "w", encoding="utf-8") as f:
         f.write(slide_rel)
 
 # Package into .pptx (zip)
